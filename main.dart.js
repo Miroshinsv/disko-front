@@ -10372,7 +10372,7 @@ a3R:function(){var s=0,r=P.a8(t.EI),q,p,o,n,m
 var $async$a3R=P.a4(function(a,b){if(a===1)return P.a5(b,r)
 while(true)switch(s){case 0:o=t.Q
 s=3
-return P.am(G.alQ("https://otus-api.herokuapp.com//events/get/all/",P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],o,o)),$async$a3R)
+return P.am(G.alQ("https://otus-api.herokuapp.com/events/get/all/",P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],o,o)),$async$a3R)
 case 3:n=b
 m=new P.DP(!1).cf(n.x)
 if(n.b===200){p=H.d([],t.rv)
@@ -10385,10 +10385,10 @@ return P.a7($async$a3R,r)},
 a4i:function(a){var s=0,r=P.a8(t.fS),q,p,o
 var $async$a4i=P.a4(function(b,c){if(b===1)return P.a5(c,r)
 while(true)switch(s){case 0:o=t.Q
-G.ace("https://otus-api.herokuapp.com/",P.an(["Access-Control-Allow-Origin","true"],o,o))
+G.ace("https://otus-api.herokuapp.com",P.an(["Access-Control-Allow-Origin","true"],o,o))
 a.e=11
 s=3
-return P.am(G.Kj("https://otus-api.herokuapp.com/"+("/events/update/"+H.b(a.a)+"/"),C.aK.fz(F.a5L(a)),P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],o,o)),$async$a4i)
+return P.am(G.Kj("https://otus-api.herokuapp.com"+("/events/update/"+H.b(a.a)+"/"),C.aK.fz(F.a5L(a)),P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],o,o)),$async$a4i)
 case 3:p=c
 if(p.b===200){q=F.a5K(C.aK.rh(0,B.ac5(U.ab8(p.e).c.a.h(0,"charset")).dm(0,p.x),null))
 s=1
@@ -10400,7 +10400,7 @@ var $async$a3H=P.a4(function(b,c){if(b===1)return P.a5(c,r)
 while(true)switch(s){case 0:a.e=11
 p=t.Q
 s=3
-return P.am(G.Kj("https://otus-api.herokuapp.com//events/add/",C.aK.fz(F.a5L(a)),P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3H)
+return P.am(G.Kj("https://otus-api.herokuapp.com/events/add/",C.aK.fz(F.a5L(a)),P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3H)
 case 3:o=c
 if(o.b===200){q=F.a5K(C.aK.rh(0,B.ac5(U.ab8(o.e).c.a.h(0,"charset")).dm(0,o.x),null))
 s=1
@@ -10410,9 +10410,9 @@ return P.a7($async$a3H,r)},
 a3t:function(a){var s=0,r=P.a8(t.w5),q,p
 var $async$a3t=P.a4(function(b,c){if(b===1)return P.a5(c,r)
 while(true)switch(s){case 0:p=t.Q
-G.ace("https://otus-api.herokuapp.com/",P.an(["Access-Control-Allow-Origin","true"],p,p))
+G.ace("https://otus-api.herokuapp.com",P.an(["Access-Control-Allow-Origin","true"],p,p))
 s=3
-return P.am(G.Kj("https://otus-api.herokuapp.com/"+("/events/activate/"+H.b(a)+"/"),null,P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3t)
+return P.am(G.Kj("https://otus-api.herokuapp.com"+("/events/activate/"+H.b(a)+"/"),null,P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3t)
 case 3:if(c.b===200){q=!0
 s=1
 break}else throw H.a("Cannot activate event")
@@ -10422,7 +10422,7 @@ a3K:function(a){var s=0,r=P.a8(t.w5),q,p,o
 var $async$a3K=P.a4(function(b,c){if(b===1)return P.a5(c,r)
 while(true)switch(s){case 0:p=t.Q
 s=3
-return P.am(G.Kj("https://otus-api.herokuapp.com/"+("/events/disband/"+H.b(a)+"/"),null,P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3K)
+return P.am(G.Kj("https://otus-api.herokuapp.com"+("/events/disband/"+H.b(a)+"/"),null,P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3K)
 case 3:o=c
 P.m7(o.a.b)
 if(o.b===200){q=!0
@@ -10434,7 +10434,7 @@ a3J:function(a){var s=0,r=P.a8(t.w5),q,p
 var $async$a3J=P.a4(function(b,c){if(b===1)return P.a5(c,r)
 while(true)switch(s){case 0:p=t.Q
 s=3
-return P.am(G.Kj("https://otus-api.herokuapp.com/"+("/events/deactivate/"+H.b(a)+"/"),null,P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3J)
+return P.am(G.Kj("https://otus-api.herokuapp.com"+("/events/deactivate/"+H.b(a)+"/"),null,P.an(["Access-Control-Allow-Origin","*","Access-Control-Allow-Credentials","true","Access-Control-Allow-Methods","POST, GET, OPTIONS","Access-Control-Allow-Headers","Origin, Content-Type, X-Auth-Token"],p,p)),$async$a3J)
 case 3:if(c.b===200){q=!0
 s=1
 break}else throw H.a("Cannot deactivate event")
