@@ -1,0 +1,15 @@
+/* Старт: Фаил REST Vendor и FONTS  */
+@import url(vendor/normalize.css);
+/* Конец: Фаил REST Vendor и FONTS */
+
+/* Старт: Действие при наведении */
+@import url(./blocks/hover-opacity/hover-opacity.css);
+/* Конец: Действие при наведении */
+
+/* Старт: Форма */
+@import url(./blocks/form/form.css);
+@import url(./blocks/form/__title/form__title.css);
+@import url(./blocks/form/__set/form__set.css);
+@import url(./blocks/form/__input/form__input.css);
+@import url(./blocks/form/__btn-submit/form__btn-submit.css);
+/* Конец: Форма */

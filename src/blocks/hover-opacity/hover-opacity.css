@@ -1,0 +1,10 @@
+.hover-opacity:hover {
+    background: linear-gradient(
+            25deg,
+            rgba(251,12,214,0.9) 0%,
+            rgba(171,20,241,1) 27%,
+            rgba(63,63,255,0.8) 67%,
+            rgba(0,212,255,0.7) 98%);
+    cursor: pointer;
+    transition: 0.8s;
+}
