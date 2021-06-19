@@ -13,6 +13,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
+    const history =  useHistory();
 
     // 1. Регистрация пользовотеля
     const onRegister = (registerData) => {
@@ -37,6 +38,7 @@ function App() {
             .then((token) => {
                 localStorage.setItem('jwt', token); //временно надо http Only
                 setLoggedIn(true)
+                console.log(loggedIn);
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -52,6 +54,12 @@ function App() {
         // return;
     }
 
+    React.useEffect(() => {
+        if (loggedIn) {
+            history.push('/disco-events');
+        }
+    }, [history, loggedIn]);
+
   return (
       <div className="page">
           <Switch>
@@ -59,7 +67,7 @@ function App() {
                   exact
                   isLoggedIn={loggedIn}
                   component={Main}
-                  path={"/profile"}
+                  path={"/disco-events"}
               />
               <Route path={"/sign-in"}>
                   <Login onLogin={onLogin}/>
