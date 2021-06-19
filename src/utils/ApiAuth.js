@@ -14,7 +14,6 @@ export const register = ({first_name, last_name, Email, Password, Phone, Role}) 
     console.log(`ApiAuth (func 1) | ${ first_name, last_name, Email, Password, Phone, Role }`);
 
     return fetch(`${BASE_URL}/auth/register/`, {
-        mode: "no-cors",
         method: "POST",
         headers,
         body: JSON.stringify({first_name, last_name, Email, Password, Phone, Role})

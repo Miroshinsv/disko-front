@@ -9,8 +9,10 @@ import Register from "./Register";
 import Login from "./Login";
 import * as ApiAuth from "../utils/ApiAuth";
 import { directoryHTTP } from "../utils/constants";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
+    const [loggedIn, setLoggedIn] = React.useState(false);
 
     // 1. Регистрация пользовотеля
     const onRegister = (registerData) => {
@@ -29,13 +31,12 @@ function App() {
 
     // 2. Авторидзация пользовотеля
     const onLogin = (loginData) => {
-        console.log(`Попытка попытка, log: ${loginData}`)
 
         return ApiAuth
             .login(loginData)
             .then((token) => {
-                console.log(`Авторизация пройдена, log: ${token}`);
-                localStorage.setItem('jwt', token); //временно
+                localStorage.setItem('jwt', token); //временно надо http Only
+                setLoggedIn(true)
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -43,21 +44,38 @@ function App() {
             });
     }
 
+    // 3. Проверка токена
+    const tokenCheck = () => {
+        // if (!jwt) {
+        //     return;
+        // }
+        // return;
+    }
+
   return (
       <div className="page">
           <Switch>
+              <ProtectedRoute
+                  exact
+                  isLoggedIn={loggedIn}
+                  component={Main}
+                  path={"/profile"}
+              />
               <Route path={"/sign-in"}>
-                  <Register onRegister={onRegister}/>
-              </Route>
-              <Route path={"/sign-up"}>
                   <Login onLogin={onLogin}/>
               </Route>
-              <Route path={"/disco-events"}>
-                  <Header />
-                  <Main />
+              <Route path={"/sign-up"}>
+                  <Register onRegister={onRegister}/>
+              </Route>
+              {/*<Route path={"/disco-events"}>*/}
+              {/*    <Header />*/}
+              {/*    <Main />*/}
+              {/*</Route>*/}
+              <Route path="/">
+                  {loggedIn ? <Redirect to="/disco-events"/> : <Redirect to="/sign-in"/>}
               </Route>
 
-            <PopupAddEvent />
+            {/*<PopupAddEvent />*/}
           </Switch>
       </div>
   );
