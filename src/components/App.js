@@ -16,6 +16,16 @@ function App() {
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
     const history =  useHistory();
 
+    React.useEffect(() => {
+        tokenCheck();
+    }, []);
+
+    React.useEffect(() => {
+        if (loggedIn) {
+            history.push('/disco-events');
+        }
+    }, [history, loggedIn]);
+
     // 1. Регистрация пользовотеля
     const onRegister = (registerData) => {
         console.log(`Попытка регистрации, log: ${registerData}`)
@@ -37,9 +47,9 @@ function App() {
         return ApiAuth
             .login(loginData)
             .then((token) => {
-                localStorage.setItem('jwt', token); //временно надо http Only
-                setLoggedIn(true)
-                console.log(loggedIn);
+                localStorage.setItem('xToken', token.auth); //временно надо http Only
+                localStorage.setItem('refresh', token.refresh); //временно надо http Only
+                setLoggedIn(true);
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -49,10 +59,21 @@ function App() {
 
     // 3. Проверка токена
     const tokenCheck = () => {
-        // if (!jwt) {
-        //     return;
-        // }
-        // return;
+        const xToken = localStorage.getItem('xToken');
+        console.log(xToken)
+
+        if (!xToken) {
+            return;
+        }
+        ApiAuth.getContent(xToken)
+            .then((cardUser) => {
+                setLoggedIn(true);
+                console.log(cardUser);
+            })
+            .catch((err) => {
+                console.log('Код ошибки:', err);
+                console.log(`Справочник ошибок ${directoryHTTP}`)
+            });
     }
 
     // 4. Закрыть попапы 
@@ -71,12 +92,6 @@ function App() {
         //Позже добавить метод отправки данных на сервер
         setIsAddCardPopupOpen(false); //! Перенести в промис then
     }
-
-    React.useEffect(() => {
-        if (loggedIn) {
-            history.push('/disco-events');
-        }
-    }, [history, loggedIn]);
 
   return (
       <div className="page">

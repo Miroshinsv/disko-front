@@ -30,14 +30,14 @@ export const login = ({email, password}) => {
     }).then(checkResponse)
 }
 
-// 3. Проверка токена.
-export const getContent = (jwt) => {
-    // console.log(`ApiAuth (func 3)| token: ${jwt}`);
-    return fetch(`${BASE_URL}/users/me`, {
+// 3. Получить дискотеки.
+export const getContent = (xToken) => {
+    // console.log(`ApiAuth (func 3)| token: ${xToken}`);
+    return fetch(`${BASE_URL}/schedule/all/`, {
         method: "GET",
         headers: {
             ...headers,
-            'Authorization': `Bearer ${jwt}`
+            'Authorization': `${xToken}`,
         }
     }).then(checkResponse)
 }
