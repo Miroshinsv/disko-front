@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Miroshinsv/disko-front.git/static/css/main.2a45324b.chunk.css",
-    "main.js": "/Miroshinsv/disko-front.git/static/js/main.b6734ea7.chunk.js",
-    "main.js.map": "/Miroshinsv/disko-front.git/static/js/main.b6734ea7.chunk.js.map",
+    "main.js": "/Miroshinsv/disko-front.git/static/js/main.7c28c067.chunk.js",
+    "main.js.map": "/Miroshinsv/disko-front.git/static/js/main.7c28c067.chunk.js.map",
     "runtime-main.js": "/Miroshinsv/disko-front.git/static/js/runtime-main.b5ad9560.js",
     "runtime-main.js.map": "/Miroshinsv/disko-front.git/static/js/runtime-main.b5ad9560.js.map",
     "static/js/2.4c985baf.chunk.js": "/Miroshinsv/disko-front.git/static/js/2.4c985baf.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.b5ad9560.js",
     "static/js/2.4c985baf.chunk.js",
     "static/css/main.2a45324b.chunk.css",
-    "static/js/main.b6734ea7.chunk.js"
+    "static/js/main.7c28c067.chunk.js"
   ]
 }
