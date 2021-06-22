@@ -1,7 +1,8 @@
 import React from "react";
 
 
-function PopupAddEvent() {
+function PopupAddEvent({ isOpen, onClose, onAddCard }) {
+    const classOpen = isOpen? 'popup_opened' : '';
     const [dataForm, setDataForm] =  React.useState({
         discoteca: '',
         address: '',
@@ -26,11 +27,13 @@ function PopupAddEvent() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
+        onAddCard(dataForm);
+
         console.log(dataForm);
     }
 
     return (
-        <section className="popup">
+        <section className={`popup ${classOpen}`}>
             <form className="form" onSubmit={handleSubmit}>
                 <h2 className="form__title">Добавить мероприятие</h2>
 
@@ -70,7 +73,7 @@ function PopupAddEvent() {
 
                 </fieldset>
                 <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Создать дискотеку" />
-                <button className="form__btn-exit hover-opacity"  type="reset" />
+                <button className="form__btn-exit hover-opacity"  type="reset" onClick={onClose}>Закрыть</button>
             </form>
         </section>
     );

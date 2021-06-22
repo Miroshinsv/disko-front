@@ -1,11 +1,12 @@
 import React from "react";
 import Card from "./Card";
+import PopupAddEvent from "./PopupAddEvent";
 
-function Main() {
+function Main({addCardPopupClik}) {
 
     return (
         <main className="content">
-            <section className="#">
+            {/* <section className="#">
                 <h2>Понедельник</h2>
                 <Card title={"Card 1"} />
                 <Card title={"Card 2"} />
@@ -41,8 +42,8 @@ function Main() {
                 <h2>Воскресенье</h2>
                 <Card title={"Card 15"} />
                 <Card title={"Card 16"} />
-            </section>
-
+            </section> */}
+            <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
         </main>
     );
 }

@@ -13,6 +13,7 @@ import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
+    const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
     const history =  useHistory();
 
     // 1. Регистрация пользовотеля
@@ -54,6 +55,23 @@ function App() {
         // return;
     }
 
+    // 4. Закрыть попапы 
+    const closeAllPopups = () => {
+        setIsAddCardPopupOpen(false);
+    }
+
+    // 5. Открыть попап добавления карточки дискотеки
+    const handleAddCardClick = () => {
+        setIsAddCardPopupOpen(true);
+    }
+
+    // Добавить карточку дискотеки
+    const handleAddCard = (dataCardDisco) => {
+        console.log('Данные дискотеки', dataCardDisco);
+        //Позже добавить метод отправки данных на сервер
+        setIsAddCardPopupOpen(false); //! Перенести в промис then
+    }
+
     React.useEffect(() => {
         if (loggedIn) {
             history.push('/disco-events');
@@ -68,6 +86,7 @@ function App() {
                   isLoggedIn={loggedIn}
                   component={Main}
                   path={"/disco-events"}
+                  addCardPopupClik={handleAddCardClick}
               />
               <Route path={"/sign-in"}>
                   <Login onLogin={onLogin}/>
@@ -82,9 +101,12 @@ function App() {
               <Route path="/">
                   {loggedIn ? <Redirect to="/disco-events"/> : <Redirect to="/sign-in"/>}
               </Route>
-
-            {/*<PopupAddEvent />*/}
           </Switch>
+          <PopupAddEvent 
+                onClose={closeAllPopups}
+                isOpen={isAddCardPopupOpen} 
+                onAddCard={handleAddCard}
+            />
       </div>
   );
 }
