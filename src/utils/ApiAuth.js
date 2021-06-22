@@ -41,3 +41,15 @@ export const getContent = (jwt) => {
         }
     }).then(checkResponse)
 }
+
+// 4. Добавить дискотекую
+export const addNewEvent = (dataNewDisco, xToken) => {
+    return fetch(`${BASE_URL}/маршрут `, {
+        method: "POST",
+        headers: {
+            ...headers,
+            'Authorization': 'токен',
+        },
+        body: JSON.stringify(dataNewDisco)
+    }).then(checkResponse)
+}
