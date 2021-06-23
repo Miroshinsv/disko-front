@@ -9,8 +9,11 @@ function PopupAddEvent({ isOpen, onClose, onAddCard }) {
         time: '',
         price: '',
         avatar: '',
-        day: {value: 'Mon'},
-        inActive: false,
+        day: {value: 'monday'},
+        is_active: false,
+        lat: null,
+        lng: null,
+        type_id: 11
     });
 
     const handleChange = (e) => {
@@ -47,13 +50,13 @@ function PopupAddEvent({ isOpen, onClose, onAddCard }) {
                     <span className="form__error-span" id="" />
 
                     <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day}>
-                        <option value="Mon">Понедельник</option>
-                        <option value="Tue">Вторник</option>
-                        <option value="Wed">Среда</option>
-                        <option value="Thu">Четверг</option>
-                        <option value="Fri">Пятница</option>
-                        <option value="Sat">Суббота</option>
-                        <option value="Sun">Воскресенье</option>
+                        <option value="monday">Понедельник</option>
+                        <option value="tuesday">Вторник</option>
+                        <option value="wednesday">Среда</option>
+                        <option value="thursday">Четверг</option>
+                        <option value="fridayi">Пятница</option>
+                        <option value="saturday">Суббота</option>
+                        <option value="sunday">Воскресенье</option>
                     </select>
 
                     <input className="form__input form__time" id="time" type="time" name="time"
@@ -69,7 +72,7 @@ function PopupAddEvent({ isOpen, onClose, onAddCard }) {
                     <span className="form__error-span" id="avatar-link-error" />
 
                     <label className="form__input form__action">Активна:</label>
-                    <input type="checkbox" name="inActive" onChange={handleChange} checked={dataForm.inActive}/>
+                    <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
 
                 </fieldset>
                 <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Создать дискотеку" />

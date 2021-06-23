@@ -14,7 +14,18 @@ import ProtectedRoute from "./ProtectedRoute";
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
+    const [userCards , setUsersCards] = React.useState([]);
     const history =  useHistory();
+
+    React.useEffect(() => {
+        tokenCheck();
+    }, []);
+
+    React.useEffect(() => {
+        if (loggedIn) {
+            history.push('/disco-events');
+        }
+    }, [history, loggedIn]);
 
     // 1. Регистрация пользовотеля
     const onRegister = (registerData) => {
@@ -37,9 +48,9 @@ function App() {
         return ApiAuth
             .login(loginData)
             .then((token) => {
-                localStorage.setItem('jwt', token); //временно надо http Only
-                setLoggedIn(true)
-                console.log(loggedIn);
+                localStorage.setItem('xToken', token.auth); //временно надо http Only
+                localStorage.setItem('refresh', token.refresh); //временно надо http Only
+                setLoggedIn(true);
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -49,13 +60,25 @@ function App() {
 
     // 3. Проверка токена
     const tokenCheck = () => {
-        // if (!jwt) {
-        //     return;
-        // }
-        // return;
+        const xToken = localStorage.getItem('xToken');
+        console.log(xToken)
+
+        if (!xToken) {
+            return;
+        }
+        ApiAuth.getContent(xToken)
+            .then((cardUser) => {
+                setLoggedIn(true);
+                setUsersCards(cardUser)
+            })
+            .catch((err) => {
+                console.log('Код ошибки:', err);
+                console.log(`Справочник ошибок ${directoryHTTP}`)
+            });
     }
 
-    // 4. Закрыть попапы 
+
+    // 4. Закрыть попапы
     const closeAllPopups = () => {
         setIsAddCardPopupOpen(false);
     }
@@ -67,16 +90,18 @@ function App() {
 
     // Добавить карточку дискотеки
     const handleAddCard = (dataCardDisco) => {
-        console.log('Данные дискотеки', dataCardDisco);
-        //Позже добавить метод отправки данных на сервер
-        setIsAddCardPopupOpen(false); //! Перенести в промис then
-    }
+        const xToken = localStorage.getItem('xToken');
 
-    React.useEffect(() => {
-        if (loggedIn) {
-            history.push('/disco-events');
-        }
-    }, [history, loggedIn]);
+        ApiAuth.addNewEvent(dataCardDisco, xToken)
+            .then((newCard) => {
+                console.log(newCard);
+                setIsAddCardPopupOpen(false);
+            })
+            .catch((err) => {
+                console.log('Код ошибки:', err);
+                console.log(`Справочник ошибок ${directoryHTTP}`)
+            });
+    }
 
   return (
       <div className="page">
@@ -87,6 +112,7 @@ function App() {
                   component={Main}
                   path={"/disco-events"}
                   addCardPopupClik={handleAddCardClick}
+                  cards={userCards}
               />
               <Route path={"/sign-in"}>
                   <Login onLogin={onLogin}/>
@@ -102,9 +128,9 @@ function App() {
                   {loggedIn ? <Redirect to="/disco-events"/> : <Redirect to="/sign-in"/>}
               </Route>
           </Switch>
-          <PopupAddEvent 
+          <PopupAddEvent
                 onClose={closeAllPopups}
-                isOpen={isAddCardPopupOpen} 
+                isOpen={isAddCardPopupOpen}
                 onAddCard={handleAddCard}
             />
       </div>

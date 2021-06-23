@@ -30,14 +30,38 @@ export const login = ({email, password}) => {
     }).then(checkResponse)
 }
 
-// 3. Проверка токена.
-export const getContent = (jwt) => {
-    // console.log(`ApiAuth (func 3)| token: ${jwt}`);
-    return fetch(`${BASE_URL}/users/me`, {
+// 3. Получить дискотеки.
+export const getContent = (xToken) => {
+    // console.log(`ApiAuth (func 3)| token: ${xToken}`);
+    return fetch(`${BASE_URL}/schedule/all/`, {
         method: "GET",
         headers: {
             ...headers,
-            'Authorization': `Bearer ${jwt}`
+            "X-Token": xToken,
         }
+    }).then(checkResponse)
+}
+
+// 4. Добавить дискотеку
+export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_active}, xToken) => {
+ console.log(xToken);
+    return fetch(`${BASE_URL}/events/add/`, {
+        method: "POST",
+        headers: {
+            ...headers,
+            "X-Token": xToken,
+        },
+        body: JSON.stringify({
+            days: day,
+            description: discoteca,
+            is_active: is_active,
+            logo: avatar,
+            price: price,
+            start_time: time,
+            name: null,
+            lat: null,
+            lng: null,
+            type_id: 11
+        })
     }).then(checkResponse)
 }
