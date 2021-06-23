@@ -37,19 +37,31 @@ export const getContent = (xToken) => {
         method: "GET",
         headers: {
             ...headers,
-            'Authorization': `${xToken}`,
+            "X-Token": xToken,
         }
     }).then(checkResponse)
 }
 
-// 4. Добавить дискотекую
-export const addNewEvent = (dataNewDisco, xToken) => {
-    return fetch(`${BASE_URL}/маршрут `, {
+// 4. Добавить дискотеку
+export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_active}, xToken) => {
+ console.log(xToken);
+    return fetch(`${BASE_URL}/events/add/`, {
         method: "POST",
         headers: {
             ...headers,
-            'Authorization': 'токен',
+            "X-Token": xToken,
         },
-        body: JSON.stringify(dataNewDisco)
+        body: JSON.stringify({
+            days: day,
+            description: discoteca,
+            is_active: is_active,
+            logo: avatar,
+            price: price,
+            start_time: time,
+            name: null,
+            lat: null,
+            lng: null,
+            type_id: 11
+        })
     }).then(checkResponse)
 }

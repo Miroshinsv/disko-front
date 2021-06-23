@@ -10,7 +10,10 @@ function PopupAddEvent({ isOpen, onClose, onAddCard }) {
         price: '',
         avatar: '',
         day: {value: 'monday'},
-        inActive: false,
+        is_active: false,
+        lat: null,
+        lng: null,
+        type_id: 11
     });
 
     const handleChange = (e) => {
@@ -69,7 +72,7 @@ function PopupAddEvent({ isOpen, onClose, onAddCard }) {
                     <span className="form__error-span" id="avatar-link-error" />
 
                     <label className="form__input form__action">Активна:</label>
-                    <input type="checkbox" name="inActive" onChange={handleChange} checked={dataForm.inActive}/>
+                    <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
 
                 </fieldset>
                 <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Создать дискотеку" />

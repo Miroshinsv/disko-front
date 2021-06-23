@@ -14,6 +14,7 @@ import ProtectedRoute from "./ProtectedRoute";
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
+    const [userCards , setUsersCards] = React.useState([]);
     const history =  useHistory();
 
     React.useEffect(() => {
@@ -68,7 +69,7 @@ function App() {
         ApiAuth.getContent(xToken)
             .then((cardUser) => {
                 setLoggedIn(true);
-                console.log(cardUser);
+                setUsersCards(cardUser)
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -76,7 +77,8 @@ function App() {
             });
     }
 
-    // 4. Закрыть попапы 
+
+    // 4. Закрыть попапы
     const closeAllPopups = () => {
         setIsAddCardPopupOpen(false);
     }
@@ -88,9 +90,17 @@ function App() {
 
     // Добавить карточку дискотеки
     const handleAddCard = (dataCardDisco) => {
-        console.log('Данные дискотеки', dataCardDisco);
-        //Позже добавить метод отправки данных на сервер
-        setIsAddCardPopupOpen(false); //! Перенести в промис then
+        const xToken = localStorage.getItem('xToken');
+
+        ApiAuth.addNewEvent(dataCardDisco, xToken)
+            .then((newCard) => {
+                console.log(newCard);
+                setIsAddCardPopupOpen(false);
+            })
+            .catch((err) => {
+                console.log('Код ошибки:', err);
+                console.log(`Справочник ошибок ${directoryHTTP}`)
+            });
     }
 
   return (
@@ -102,6 +112,7 @@ function App() {
                   component={Main}
                   path={"/disco-events"}
                   addCardPopupClik={handleAddCardClick}
+                  cards={userCards}
               />
               <Route path={"/sign-in"}>
                   <Login onLogin={onLogin}/>
@@ -117,9 +128,9 @@ function App() {
                   {loggedIn ? <Redirect to="/disco-events"/> : <Redirect to="/sign-in"/>}
               </Route>
           </Switch>
-          <PopupAddEvent 
+          <PopupAddEvent
                 onClose={closeAllPopups}
-                isOpen={isAddCardPopupOpen} 
+                isOpen={isAddCardPopupOpen}
                 onAddCard={handleAddCard}
             />
       </div>
