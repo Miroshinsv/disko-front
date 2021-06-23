@@ -13,11 +13,14 @@ function Main({ addCardPopupClik, cards }) {
             <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
             <section className="#">
                 <h2>Понедельник</h2>
-              {/*{*/}
-              {/*  cards.map(if (days === ) => <Card*/}
-              {/*    key={item._id}*/}
-              {/*  />)*/}
-              {/*}*/}
+              {
+                cards.map(item => <Card
+                  key={item._id}
+                  name={item.description}
+                  img={item.logo}
+                  isActive={item.is_active}
+                />)
+              }
             </section>
             <section className="#">
                 <h2>Вторник</h2>
