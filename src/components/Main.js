@@ -17,7 +17,7 @@ function Main({ addCardPopupClik, schedule }) {
     tuesday: [],
     wednesday: [],
     thursday: [],
-    fridayi: [],
+    friday: [],
     saturday: [],
     sunday: [],
   }
@@ -84,7 +84,7 @@ function Main({ addCardPopupClik, schedule }) {
       <section className="week-day">
         <h2 className="week-day__title">Пятница</h2>
         {
-          weeks['fridayi'].map((item) =>
+          weeks['friday'].map((item) =>
             <Card
               key={item.ID}
               name={item.description}
