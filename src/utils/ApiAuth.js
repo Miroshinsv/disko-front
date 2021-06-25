@@ -52,7 +52,7 @@ export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_a
             "X-Token": xToken,
         },
         body: JSON.stringify({
-            days: day,
+            days: day.value,
             description: discoteca,
             is_active: is_active,
             logo: avatar,
