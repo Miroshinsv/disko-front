@@ -17,17 +17,19 @@ function Main({ addCardPopupClik, schedule }) {
     tuesday: [],
     wednesday: [],
     thursday: [],
-    fridayi: [],
+    friday: [],
     saturday: [],
     sunday: [],
   }
 
   const one = schedule.values();
   let to = null;
+  console.log(one);
 
   while (!(to = one.next()).done) {
     weeks[to.value['days']].push(to);
   }
+
 
   return (
     <main className="content">
@@ -50,10 +52,10 @@ function Main({ addCardPopupClik, schedule }) {
         {
           weeks['tuesday'].map((item) =>
             <Card
-              key={item.ID}
-              name={item.description}
-              img={item.logo}
-              isActive={item.is_active}
+              key={item.value.ID}
+              name={item.value.description}
+              img={item.value.logo}
+              isActive={item.value.is_active}
             />)
         }
       </section>
@@ -62,10 +64,10 @@ function Main({ addCardPopupClik, schedule }) {
         {
           weeks['wednesday'].map((item) =>
             <Card
-              key={item.ID}
-              name={item.description}
-              img={item.logo}
-              isActive={item.is_active}
+              key={item.value.ID}
+              name={item.value.description}
+              img={item.value.logo}
+              isActive={item.value.is_active}
             />)
         }
       </section>
@@ -84,12 +86,12 @@ function Main({ addCardPopupClik, schedule }) {
       <section className="week-day">
         <h2 className="week-day__title">Пятница</h2>
         {
-          weeks['fridayi'].map((item) =>
+          weeks['friday'].map((item) =>
             <Card
-              key={item.ID}
-              name={item.description}
-              img={item.logo}
-              isActive={item.is_active}
+              key={item.value.ID}
+              name={item.value.description}
+              img={item.value.logo}
+              isActive={item.value.is_active}
             />)
         }
       </section>
@@ -98,10 +100,10 @@ function Main({ addCardPopupClik, schedule }) {
         {
           weeks['saturday'].map((item) =>
             <Card
-              key={item.ID}
-              name={item.description}
-              img={item.logo}
-              isActive={item.is_active}
+              key={item.value.ID}
+              name={item.value.description}
+              img={item.value.logo}
+              isActive={item.value.is_active}
             />)
         }
       </section>
@@ -110,10 +112,10 @@ function Main({ addCardPopupClik, schedule }) {
         {
           weeks['sunday'].map((item) =>
             <Card
-              key={item.ID}
-              name={item.description}
-              img={item.logo}
-              isActive={item.is_active}
+              key={item.value.ID}
+              name={item.value.description}
+              img={item.value.logo}
+              isActive={item.value.is_active}
             />)
         }
       </section>

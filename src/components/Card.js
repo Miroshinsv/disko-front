@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ key, name, img, isActive}) {
+function Card({ name, img, isActive}) {
 
     return (
         <div className="#">
