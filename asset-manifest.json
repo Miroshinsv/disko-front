@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/Miroshinsv/disko-front.git/static/css/main.2a45324b.chunk.css",
-    "main.js": "/Miroshinsv/disko-front.git/static/js/main.f5bf6b3c.chunk.js",
-    "main.js.map": "/Miroshinsv/disko-front.git/static/js/main.f5bf6b3c.chunk.js.map",
+    "main.js": "/Miroshinsv/disko-front.git/static/js/main.6786dc8f.chunk.js",
+    "main.js.map": "/Miroshinsv/disko-front.git/static/js/main.6786dc8f.chunk.js.map",
     "runtime-main.js": "/Miroshinsv/disko-front.git/static/js/runtime-main.b5ad9560.js",
     "runtime-main.js.map": "/Miroshinsv/disko-front.git/static/js/runtime-main.b5ad9560.js.map",
-    "static/js/2.efad0b39.chunk.js": "/Miroshinsv/disko-front.git/static/js/2.efad0b39.chunk.js",
-    "static/js/2.efad0b39.chunk.js.map": "/Miroshinsv/disko-front.git/static/js/2.efad0b39.chunk.js.map",
+    "static/js/2.4c985baf.chunk.js": "/Miroshinsv/disko-front.git/static/js/2.4c985baf.chunk.js",
+    "static/js/2.4c985baf.chunk.js.map": "/Miroshinsv/disko-front.git/static/js/2.4c985baf.chunk.js.map",
     "index.html": "/Miroshinsv/disko-front.git/index.html",
     "static/css/main.2a45324b.chunk.css.map": "/Miroshinsv/disko-front.git/static/css/main.2a45324b.chunk.css.map",
-    "static/js/2.efad0b39.chunk.js.LICENSE.txt": "/Miroshinsv/disko-front.git/static/js/2.efad0b39.chunk.js.LICENSE.txt"
+    "static/js/2.4c985baf.chunk.js.LICENSE.txt": "/Miroshinsv/disko-front.git/static/js/2.4c985baf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b5ad9560.js",
-    "static/js/2.efad0b39.chunk.js",
+    "static/js/2.4c985baf.chunk.js",
     "static/css/main.2a45324b.chunk.css",
-    "static/js/main.f5bf6b3c.chunk.js"
+    "static/js/main.6786dc8f.chunk.js"
   ]
 }
