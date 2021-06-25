@@ -1,52 +1,124 @@
 import React from "react";
 import Card from "./Card";
 
-function Main({ addCardPopupClik, cards }) {
-  console.log(cards);
-    function cardFilters(day, cardsDay) {
-      if (day === cardsDay) {
-        return
-      }
-    }
-    return (
-        <main className="content">
-            <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
-            <section className="#">
-                <h2>Понедельник</h2>
-              {
-                cards.map(item => <Card
-                  key={item._id}
-                  name={item.description}
-                  img={item.logo}
-                  isActive={item.is_active}
-                />)
-              }
-            </section>
-            <section className="#">
-                <h2>Вторник</h2>
-            </section>
-            <section className="#">
-                <h2>Среда</h2>
+function Main({ addCardPopupClik, schedule }) {
+  console.log(schedule);
+  // const [weeks, setWeeks] = React.useState({
+  //   monday: [],
+  //   tuesday: [],
+  //   wednesday: [],
+  //   thursday: [],
+  //   fridayi: [],
+  //   saturday: [],
+  //   sunday: [],
+  // })
+  const weeks= {
+    monday: [],
+    tuesday: [],
+    wednesday: [],
+    thursday: [],
+    fridayi: [],
+    saturday: [],
+    sunday: [],
+  }
 
-            </section>
-            <section className="#">
-                <h2>Четверг</h2>
+  const one = schedule.values();
+  let to = null;
 
-            </section>
-            <section className="#">
-                <h2>Пятница</h2>
+  while (!(to = one.next()).done) {
+    weeks[to.value['days']].push(to);
+  }
 
-            </section>
-            <section className="#">
-                <h2>Суббота</h2>
+  return (
+    <main className="content">
+      <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
 
-            </section>
-            <section className="#">
-                <h2>Воскресенье</h2>
-
-            </section>
-        </main>
-    );
+      <section className="week-day">
+        <h2 className="week-day__title">Понедельник</h2>
+        {
+          weeks['monday'].map(item =>
+            <Card
+              key={item.value.id}
+              name={item.value.description}
+              img={item.value.logo}
+              isActive={item.value.is_active}
+            />)
+        }
+      </section>
+      <section className="week-day">
+        <h2 className="week-day__title">Вторник</h2>
+        {
+          weeks['tuesday'].map((item) =>
+            <Card
+              key={item.ID}
+              name={item.description}
+              img={item.logo}
+              isActive={item.is_active}
+            />)
+        }
+      </section>
+      <section className="week-day">
+        <h2 className="week-day__title">Среда</h2>
+        {
+          weeks['wednesday'].map((item) =>
+            <Card
+              key={item.ID}
+              name={item.description}
+              img={item.logo}
+              isActive={item.is_active}
+            />)
+        }
+      </section>
+      <section className="week-day">
+        <h2 className="week-day__title">Четверг</h2>
+        {
+          weeks['thursday'].map((item) =>
+            <Card
+              key={item.value.ID}
+              name={item.value.description}
+              img={item.value.logo}
+              isActive={item.value.is_active}
+            />)
+        }
+      </section>
+      <section className="week-day">
+        <h2 className="week-day__title">Пятница</h2>
+        {
+          weeks['fridayi'].map((item) =>
+            <Card
+              key={item.ID}
+              name={item.description}
+              img={item.logo}
+              isActive={item.is_active}
+            />)
+        }
+      </section>
+      <section className="week-day">
+        <h2 className="week-day__title">Суббота</h2>
+        {
+          weeks['saturday'].map((item) =>
+            <Card
+              key={item.ID}
+              name={item.description}
+              img={item.logo}
+              isActive={item.is_active}
+            />)
+        }
+      </section>
+      <section className="week-day">
+        <h2 className="week-day__title">Воскресенье</h2>
+        {
+          weeks['sunday'].map((item) =>
+            <Card
+              key={item.ID}
+              name={item.description}
+              img={item.logo}
+              isActive={item.is_active}
+            />)
+        }
+      </section>
+    </main>
+  );
 }
 
 export default Main;

@@ -14,7 +14,7 @@ import ProtectedRoute from "./ProtectedRoute";
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
-    const [userCards , setUsersCards] = React.useState([]);
+    const [userSchedule , setUsersSchedule] = React.useState([]);
     const history =  useHistory();
 
     React.useEffect(() => {
@@ -67,9 +67,9 @@ function App() {
             return;
         }
         ApiAuth.getContent(xToken)
-            .then((cardUser) => {
+            .then((schedule) => {
                 setLoggedIn(true);
-                setUsersCards(cardUser)
+                setUsersSchedule(schedule)
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -112,7 +112,7 @@ function App() {
                   component={Main}
                   path={"/disco-events"}
                   addCardPopupClik={handleAddCardClick}
-                  cards={userCards}
+                  schedule={userSchedule}
               />
               <Route path={"/sign-in"}>
                   <Login onLogin={onLogin}/>
