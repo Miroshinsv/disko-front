@@ -17,6 +17,7 @@ function App() {
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
     const [isEditSchedulePopupOpen, setIsEditSchedulePopupOpen] = React.useState(false);
     const [userSchedule , setUsersSchedule] = React.useState([]);
+    const [cardScheduleData, setCardScheduleData] = React.useState({});
     const history =  useHistory();
 
     React.useEffect(() => {
@@ -81,8 +82,9 @@ function App() {
 
     // 4. Закрыть попапы
     const closeAllPopups = () => {
-        setIsAddCardPopupOpen(false);
-        setIsEditSchedulePopupOpen(false)
+      setIsAddCardPopupOpen(false);
+      setIsEditSchedulePopupOpen(false);
+      setCardScheduleData({});
     }
 
     // 5. Открыть попап добавления расписания дискотеки
@@ -93,6 +95,11 @@ function App() {
   // . Открыть попап редактирования расписания
     const handleEditScheduleClick = () => {
       setIsEditSchedulePopupOpen(true);
+    }
+
+    // . Передача данных расписания попупу редактирования
+    const handleScheduleCardClick = (dataSchedule) => {
+      setCardScheduleData(dataSchedule);
     }
 
     // Добавить карточку дискотеки
@@ -120,6 +127,7 @@ function App() {
                   path={"/disco-events"}
                   addCardPopupClik={handleAddCardClick}
                   editSchedulePopupClick={handleEditScheduleClick}
+                  onEditShedulerCardClick={handleScheduleCardClick}
                   schedule={userSchedule}
               />
               <Route path={"/sign-in"}>
@@ -145,6 +153,7 @@ function App() {
         <PopupEditEvent
           formTitle={'Редактировать мероприятие'}
           onClose={closeAllPopups}
+          schedule={cardScheduleData}
           isOpen={isEditSchedulePopupOpen}
         />
       </div>

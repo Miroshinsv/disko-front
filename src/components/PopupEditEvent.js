@@ -1,7 +1,7 @@
 import React from "react";
 
-function PopupEditEvent({ formTitle, isOpen, onClose }) {
-  console.log('open', isOpen);
+function PopupEditEvent({ formTitle, isOpen, onClose, schedule }) {
+  console.log('schedule', schedule);
 
     const classOpen = isOpen? 'popup_opened' : '';
     const [dataForm, setDataForm] =  React.useState({
@@ -10,8 +10,8 @@ function PopupEditEvent({ formTitle, isOpen, onClose }) {
         time: '',
         price: '',
         avatar: '',
-        day: {value: 'monday'},
-        is_active: false,
+        day: {value: schedule.days},
+        is_active: schedule.is_active,
         lat: null,
         lng: null,
         type_id: 11

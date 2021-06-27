@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
+function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, schedule }) {
 
   console.log(schedule);
 
@@ -37,6 +37,8 @@ function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
               img={item.value.logo}
               isActive={item.value.is_active}
               onScheduleClick={editSchedulePopupClick}
+              onEditShedulerCardClick={onEditShedulerCardClick}
+              dataSchedele={item.value}
             />)
         }
       </section>
@@ -49,6 +51,9 @@ function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
               name={item.value.description}
               img={item.value.logo}
               isActive={item.value.is_active}
+              onScheduleClick={editSchedulePopupClick}
+              onEditShedulerCardClick={onEditShedulerCardClick}
+              dataSchedele={item.value}
             />)
         }
       </section>
@@ -61,6 +66,9 @@ function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
               name={item.value.description}
               img={item.value.logo}
               isActive={item.value.is_active}
+              onScheduleClick={editSchedulePopupClick}
+              onEditShedulerCardClick={onEditShedulerCardClick}
+              dataSchedele={item.value}
             />)
         }
       </section>
@@ -73,6 +81,9 @@ function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
               name={item.value.description}
               img={item.value.logo}
               isActive={item.value.is_active}
+              onScheduleClick={editSchedulePopupClick}
+              onEditShedulerCardClick={onEditShedulerCardClick}
+              dataSchedele={item.value}
             />)
         }
       </section>
@@ -85,6 +96,9 @@ function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
               name={item.value.description}
               img={item.value.logo}
               isActive={item.value.is_active}
+              onScheduleClick={editSchedulePopupClick}
+              onEditShedulerCardClick={onEditShedulerCardClick}
+              dataSchedele={item.value}
             />)
         }
       </section>
@@ -97,6 +111,9 @@ function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
               name={item.value.description}
               img={item.value.logo}
               isActive={item.value.is_active}
+              onScheduleClick={editSchedulePopupClick}
+              onEditShedulerCardClick={onEditShedulerCardClick}
+              dataSchedele={item.value}
             />)
         }
       </section>
@@ -109,6 +126,9 @@ function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
               name={item.value.description}
               img={item.value.logo}
               isActive={item.value.is_active}
+              onScheduleClick={editSchedulePopupClick}
+              onEditShedulerCardClick={onEditShedulerCardClick}
+              dataSchedele={item.value}
             />)
         }
       </section>
