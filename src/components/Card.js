@@ -1,6 +1,6 @@
 import React from "react";
 
-function Card({ name, img, isActive}) {
+function Card({ name, img, isActive, onScheduleClick}) {
 
     return (
         <div className="#">
@@ -8,7 +8,7 @@ function Card({ name, img, isActive}) {
             <h2 className="#">Название дискотеки: {name} </h2>
             <p>Активна/Не активна {isActive}</p>
             <button className="hover-opacity">+/-</button>
-            <button className="hover-opacity">Edit</button>
+            <button className="hover-opacity onScheduleClick" >Edit</button>
             <button className="hover-opacity">Trush</button>
         </div>
     );

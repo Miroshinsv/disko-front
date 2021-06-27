@@ -4,6 +4,7 @@ import { Redirect, Switch, Route, useHistory } from "react-router-dom";
 
 import Main from "./Main";
 import PopupAddEvent from "./PopupAddEvent";
+import PopupEditEvent from "./PopupEditEvent"
 import Header from "./Header";
 import Register from "./Register";
 import Login from "./Login";
@@ -14,6 +15,7 @@ import ProtectedRoute from "./ProtectedRoute";
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
+    const [isEditSchedulePopupOpen, setIsEditSchedulePopupOpen] = React.useState(false);
     const [userSchedule , setUsersSchedule] = React.useState([]);
     const history =  useHistory();
 
@@ -81,12 +83,19 @@ function App() {
     // 4. Закрыть попапы
     const closeAllPopups = () => {
         setIsAddCardPopupOpen(false);
+        setIsEditSchedulePopupOpen(false)
     }
 
-    // 5. Открыть попап добавления карточки дискотеки
+    // 5. Открыть попап добавления расписания дискотеки
     const handleAddCardClick = () => {
         setIsAddCardPopupOpen(true);
     }
+
+    const handleEditSchedule = () => {
+      setIsEditSchedulePopupOpen(true);
+    }
+
+    // . Открыть попап редактирования расписания
 
     // Добавить карточку дискотеки
     const handleAddCard = (dataCardDisco) => {
@@ -112,6 +121,7 @@ function App() {
                   component={Main}
                   path={"/disco-events"}
                   addCardPopupClik={handleAddCardClick}
+                  editSchedulePopupClick={handleEditSchedule}
                   schedule={userSchedule}
               />
               <Route path={"/sign-in"}>
@@ -129,10 +139,16 @@ function App() {
               </Route>
           </Switch>
           <PopupAddEvent
+                formTitle={'Добавить мероприятие'}
                 onClose={closeAllPopups}
                 isOpen={isAddCardPopupOpen}
                 onAddCard={handleAddCard}
-            />
+          />
+        <PopupEditEvent
+          formTitle={'Редактировать мероприятие'}
+          onClouse={closeAllPopups}
+          onEditSchedule={handleEditSchedule}
+        />
       </div>
   );
 }

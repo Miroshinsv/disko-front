@@ -1,17 +1,10 @@
 import React from "react";
 import Card from "./Card";
 
-function Main({ addCardPopupClik, schedule }) {
+function Main({ addCardPopupClik, editSchedulePopupClick, schedule }) {
+
   console.log(schedule);
-  // const [weeks, setWeeks] = React.useState({
-  //   monday: [],
-  //   tuesday: [],
-  //   wednesday: [],
-  //   thursday: [],
-  //   fridayi: [],
-  //   saturday: [],
-  //   sunday: [],
-  // })
+
   const weeks= {
     monday: [],
     tuesday: [],
@@ -24,7 +17,6 @@ function Main({ addCardPopupClik, schedule }) {
 
   const one = schedule.values();
   let to = null;
-  console.log(one);
 
   while (!(to = one.next()).done) {
     weeks[to.value['days']].push(to);
@@ -44,6 +36,7 @@ function Main({ addCardPopupClik, schedule }) {
               name={item.value.description}
               img={item.value.logo}
               isActive={item.value.is_active}
+              onScheduleClick ={editSchedulePopupClick}
             />)
         }
       </section>
@@ -62,7 +55,7 @@ function Main({ addCardPopupClik, schedule }) {
       <section className="week-day">
         <h2 className="week-day__title">Среда</h2>
         {
-          weeks['wednesday'].map((item) =>
+          weeks['thursday'].map((item) =>
             <Card
               key={item.value.ID}
               name={item.value.description}

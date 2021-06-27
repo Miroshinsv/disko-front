@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function PopupAddEvent({ isOpen, onClose, onAddCard }) {
+function PopupAddEvent({ formTitle, isOpen, onClose, onAddCard }) {
     const classOpen = isOpen? 'popup_opened' : '';
     const [dataForm, setDataForm] =  React.useState({
         discoteca: '',
@@ -20,7 +20,7 @@ function PopupAddEvent({ isOpen, onClose, onAddCard }) {
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-       
+
         setDataForm({
             ...dataForm ,
             [name]: value,
@@ -38,7 +38,7 @@ function PopupAddEvent({ isOpen, onClose, onAddCard }) {
     return (
         <section className={`popup ${classOpen}`}>
             <form className="form" onSubmit={handleSubmit}>
-                <h2 className="form__title">Добавить мероприятие</h2>
+                <h2 className="form__title">{formTitle}</h2>
 
                 <fieldset className="form__set">
                     <input className="form__input form__name-event" id="" type="text" name="discoteca"
