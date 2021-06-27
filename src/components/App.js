@@ -79,7 +79,6 @@ function App() {
             });
     }
 
-
     // 4. Закрыть попапы
     const closeAllPopups = () => {
         setIsAddCardPopupOpen(false);
@@ -91,11 +90,10 @@ function App() {
         setIsAddCardPopupOpen(true);
     }
 
-    const handleEditSchedule = () => {
+  // . Открыть попап редактирования расписания
+    const handleEditScheduleClick = () => {
       setIsEditSchedulePopupOpen(true);
     }
-
-    // . Открыть попап редактирования расписания
 
     // Добавить карточку дискотеки
     const handleAddCard = (dataCardDisco) => {
@@ -121,7 +119,7 @@ function App() {
                   component={Main}
                   path={"/disco-events"}
                   addCardPopupClik={handleAddCardClick}
-                  editSchedulePopupClick={handleEditSchedule}
+                  editSchedulePopupClick={handleEditScheduleClick}
                   schedule={userSchedule}
               />
               <Route path={"/sign-in"}>
@@ -138,16 +136,16 @@ function App() {
                   {loggedIn ? <Redirect to="/disco-events"/> : <Redirect to="/sign-in"/>}
               </Route>
           </Switch>
-          <PopupAddEvent
-                formTitle={'Добавить мероприятие'}
-                onClose={closeAllPopups}
-                isOpen={isAddCardPopupOpen}
-                onAddCard={handleAddCard}
-          />
+        <PopupAddEvent
+          formTitle={'Добавить мероприятие'}
+          onClose={closeAllPopups}
+          isOpen={isAddCardPopupOpen}
+          onAddCard={handleAddCard}
+        />
         <PopupEditEvent
           formTitle={'Редактировать мероприятие'}
-          onClouse={closeAllPopups}
-          onEditSchedule={handleEditSchedule}
+          onClose={closeAllPopups}
+          isOpen={isEditSchedulePopupOpen}
         />
       </div>
   );
