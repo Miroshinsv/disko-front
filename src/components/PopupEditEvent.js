@@ -10,12 +10,24 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule }) {
         time: '',
         price: '',
         avatar: '',
-        day: {value: schedule.days},
-        is_active: schedule.is_active,
+        day: {value: 'monday'},
+        is_active: true,
         lat: null,
         lng: null,
         type_id: 11
     });
+
+    React.useEffect(() => {
+      setDataForm({
+        discoteca: schedule.name,
+        address: schedule.description,
+        time: schedule.start_time,
+        price: schedule.price,
+        avatar: schedule.logo,
+        day: {value: schedule.days},
+        is_active: schedule.is_active,
+      })
+    }, []);
 
     const handleChange = (e) => {
         const target = e.target;
