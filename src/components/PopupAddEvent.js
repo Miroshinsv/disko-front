@@ -75,7 +75,7 @@ function PopupAddEvent({ formTitle, isOpen, onClose, onAddCard }) {
                     <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
 
                 </fieldset>
-                <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Создать дискотеку" />
+                <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Отредактировать дискотеку" />
                 <button className="form__btn-exit hover-opacity"  type="reset" onClick={onClose}>Закрыть</button>
             </form>
         </section>
