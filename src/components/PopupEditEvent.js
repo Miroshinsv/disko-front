@@ -14,7 +14,7 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule }) {
         is_active: true,
         lat: null,
         lng: null,
-        type_id: 11
+        type_id: 11,
     });
 
     React.useEffect(() => {
