@@ -80,6 +80,24 @@ function App() {
             });
     }
 
+    // . Обновить расписание
+    const handleUpdateSchedule = (updateData, id) => {
+      const xToken = localStorage.getItem('xToken');
+      console.log(xToken)
+
+      if (!xToken) {
+        return;
+      }
+      ApiAuth.updateEvent(updateData, id, xToken)
+        .then((data) => {
+          console.log(data)
+        })
+        .catch((err) => {
+          console.log('Код ошибки:', err);
+          console.log(`Справочник ошибок ${directoryHTTP}`)
+        })
+    }
+
     // 4. Закрыть попапы
     const closeAllPopups = () => {
       setIsAddCardPopupOpen(false);
@@ -155,6 +173,7 @@ function App() {
           onClose={closeAllPopups}
           schedule={cardScheduleData}
           isOpen={isEditSchedulePopupOpen}
+          onUpdateSchedule={handleUpdateSchedule}
         />
       </div>
   );

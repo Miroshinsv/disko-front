@@ -1,9 +1,10 @@
 import React from "react";
 
-function PopupEditEvent({ formTitle, isOpen, onClose, schedule }) {
+function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule }) {
   console.log('schedule', schedule);
 
     const classOpen = isOpen? 'popup_opened' : '';
+    const [id, setId] = React.useState({});
     const [dataForm, setDataForm] =  React.useState({
         discoteca: '',
         address: '',
@@ -29,6 +30,12 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule }) {
       })
     }, []);
 
+    React.useEffect(() => {
+      setId({
+        id: schedule.ID,
+      })
+    }, [])
+
     const handleChange = (e) => {
         const target = e.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -41,9 +48,10 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule }) {
     };
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+      e.preventDefault()
 
-        console.log(dataForm);
+      onUpdateSchedule(dataForm, id);
+      console.log(dataForm);
     }
 
     return (
@@ -86,7 +94,7 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule }) {
                     <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
 
                 </fieldset>
-                <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Создать дискотеку" />
+                <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Редактировать" />
                 <button className="form__btn-exit hover-opacity"  type="reset" onClick={onClose}>Закрыть</button>
             </form>
         </section>
