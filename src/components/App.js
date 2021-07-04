@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect, Switch, Route, useHistory } from "react-router-dom";
-
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 import Main from "./Main";
 import PopupAddEvent from "./PopupAddEvent";
@@ -13,6 +13,7 @@ import { directoryHTTP } from "../utils/constants";
 import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
+
     const [loggedIn, setLoggedIn] = React.useState(false);
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
     const [isEditSchedulePopupOpen, setIsEditSchedulePopupOpen] = React.useState(false);
@@ -71,8 +72,8 @@ function App() {
         }
         ApiAuth.getContent(xToken)
             .then((schedule) => {
-                setLoggedIn(true);
-                setUsersSchedule(schedule)
+              setUsersSchedule(schedule)
+              setLoggedIn(true);
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -136,7 +137,7 @@ function App() {
     }
 
   return (
-      <div className="page">
+    <>
           <Switch>
               <ProtectedRoute
                   exact
@@ -154,10 +155,6 @@ function App() {
               <Route path={"/sign-up"}>
                   <Register onRegister={onRegister}/>
               </Route>
-              {/*<Route path={"/disco-events"}>*/}
-              {/*    <Header />*/}
-              {/*    <Main />*/}
-              {/*</Route>*/}
               <Route path="/">
                   {loggedIn ? <Redirect to="/disco-events"/> : <Redirect to="/sign-in"/>}
               </Route>
@@ -175,7 +172,7 @@ function App() {
           isOpen={isEditSchedulePopupOpen}
           onUpdateSchedule={handleUpdateSchedule}
         />
-      </div>
+    </>
   );
 }
 

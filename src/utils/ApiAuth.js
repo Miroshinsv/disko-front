@@ -68,6 +68,8 @@ export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_a
 
 // 5. Редактировать расписание
 export const updateEvent = ({ discoteca, day, address, time, avatar, price, is_active, }, id, xToken) => {
+  console.log(`${BASE_URL}/events//update/${id}/`);
+  console.log(id)
   return fetch(`${BASE_URL}/events//update/${id}/`, {
     method: "POST",
     headers: {

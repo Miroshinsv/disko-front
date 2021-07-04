@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  max-width: 882px;
+
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px 18px;
+
+
+  margin: 51px auto 0;
+  padding: 0;
+}

@@ -8,13 +8,13 @@ function Card({ name, img, isActive, onEditShedulerCardClick, dataSchedele, onSc
     }
 
     return (
-        <div className="#">
+        <div className="card">
           <img className="card__img" src={img}/>
-            <h2 className="#">Название дискотеки: {name} </h2>
+            <h2 className="card__title">Название дискотеки: {name} </h2>
             <p>Активна/Не активна {isActive}</p>
-            <button className="hover-opacity">+/-</button>
-            <button className="hover-opacity" onClick={clickEdit}>Edit</button>
-            <button className="hover-opacity">Trush</button>
+            <button className="card__btn-active"/>
+            <button className="card__btn-edit" onClick={clickEdit}/>
+            <button className="card__btn-delete"/>
         </div>
     );
 }

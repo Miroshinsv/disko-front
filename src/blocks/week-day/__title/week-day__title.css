@@ -1,0 +1,7 @@
+.week-day__title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 882px;
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+.card {
+  border: solid 1px black;
+  position: relative;
+  justify-self: left;
+
+  max-width: 225px;
+  min-height: 361px;
+
+  margin: 0;
+  padding: 0;
+}

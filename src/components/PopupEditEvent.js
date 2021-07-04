@@ -1,6 +1,7 @@
 import React from "react";
 
 function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule }) {
+  schedule.start_time = undefined;
   console.log('schedule', schedule);
 
     const classOpen = isOpen? 'popup_opened' : '';
@@ -95,7 +96,7 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule 
 
                 </fieldset>
                 <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Редактировать" />
-                <button className="form__btn-exit hover-opacity"  type="reset" onClick={onClose}>Закрыть</button>
+                <button className="form__btn-exit"  type="reset" onClick={onClose}/>
             </form>
         </section>
     );

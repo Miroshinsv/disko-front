@@ -3,7 +3,7 @@ import Card from "./Card";
 
 function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, schedule }) {
 
-  console.log(schedule);
+  // console.log(schedule);
 
   const weeks= {
     monday: [],
@@ -29,108 +29,128 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
 
       <section className="week-day">
         <h2 className="week-day__title">Понедельник</h2>
-        {
-          weeks['monday'].map(item =>
-            <Card
-              key={item.value.id}
-              name={item.value.description}
-              img={item.value.logo}
-              isActive={item.value.is_active}
-              onScheduleClick={editSchedulePopupClick}
-              onEditShedulerCardClick={onEditShedulerCardClick}
-              dataSchedele={item.value}
-            />)
-        }
+        <div className="container">
+          {
+            weeks['monday'].map(item =>
+              <Card
+                key={item.value.id}
+                name={item.value.name}
+                img={item.value.logo}
+                isActive={item.value.is_active}
+                onScheduleClick={editSchedulePopupClick}
+                onEditShedulerCardClick={onEditShedulerCardClick}
+                dataSchedele={item.value}
+              />)
+          }
+        </div>
       </section>
+
       <section className="week-day">
         <h2 className="week-day__title">Вторник</h2>
-        {
-          weeks['tuesday'].map((item) =>
-            <Card
-              key={item.value.ID}
-              name={item.value.description}
-              img={item.value.logo}
-              isActive={item.value.is_active}
-              onScheduleClick={editSchedulePopupClick}
-              onEditShedulerCardClick={onEditShedulerCardClick}
-              dataSchedele={item.value}
-            />)
-        }
+        <div className="container">
+          {
+            weeks['tuesday'].map(item =>
+              <Card
+                key={item.value.id}
+                name={item.value.name}
+                img={item.value.logo}
+                isActive={item.value.is_active}
+                onScheduleClick={editSchedulePopupClick}
+                onEditShedulerCardClick={onEditShedulerCardClick}
+                dataSchedele={item.value}
+              />)
+          }
+        </div>
       </section>
+
       <section className="week-day">
         <h2 className="week-day__title">Среда</h2>
-        {
-          weeks['thursday'].map((item) =>
-            <Card
-              key={item.value.ID}
-              name={item.value.description}
-              img={item.value.logo}
-              isActive={item.value.is_active}
-              onScheduleClick={editSchedulePopupClick}
-              onEditShedulerCardClick={onEditShedulerCardClick}
-              dataSchedele={item.value}
-            />)
-        }
+        <div className="container">
+          {
+            weeks['wednesday'].map(item =>
+              <Card
+                key={item.value.id}
+                name={item.value.name}
+                img={item.value.logo}
+                isActive={item.value.is_active}
+                onScheduleClick={editSchedulePopupClick}
+                onEditShedulerCardClick={onEditShedulerCardClick}
+                dataSchedele={item.value}
+              />)
+          }
+        </div>
       </section>
+
       <section className="week-day">
         <h2 className="week-day__title">Четверг</h2>
-        {
-          weeks['thursday'].map((item) =>
-            <Card
-              key={item.value.ID}
-              name={item.value.description}
-              img={item.value.logo}
-              isActive={item.value.is_active}
-              onScheduleClick={editSchedulePopupClick}
-              onEditShedulerCardClick={onEditShedulerCardClick}
-              dataSchedele={item.value}
-            />)
-        }
+        <div className="container">
+          {
+            weeks['thursday'].map(item =>
+              <Card
+                key={item.value.id}
+                name={item.value.name}
+                img={item.value.logo}
+                isActive={item.value.is_active}
+                onScheduleClick={editSchedulePopupClick}
+                onEditShedulerCardClick={onEditShedulerCardClick}
+                dataSchedele={item.value}
+              />)
+          }
+        </div>
       </section>
+
       <section className="week-day">
         <h2 className="week-day__title">Пятница</h2>
-        {
-          weeks['friday'].map((item) =>
-            <Card
-              key={item.value.ID}
-              name={item.value.description}
-              img={item.value.logo}
-              isActive={item.value.is_active}
-              onScheduleClick={editSchedulePopupClick}
-              onEditShedulerCardClick={onEditShedulerCardClick}
-              dataSchedele={item.value}
-            />)
-        }
+        <div className="container">
+          {
+            weeks['friday'].map(item =>
+              <Card
+                key={item.value.id}
+                name={item.value.name}
+                img={item.value.logo}
+                isActive={item.value.is_active}
+                onScheduleClick={editSchedulePopupClick}
+                onEditShedulerCardClick={onEditShedulerCardClick}
+                dataSchedele={item.value}
+              />)
+          }
+        </div>
       </section>
+
       <section className="week-day">
         <h2 className="week-day__title">Суббота</h2>
-        {
-          weeks['saturday'].map((item) =>
-            <Card
-              key={item.value.ID}
-              name={item.value.description}
-              img={item.value.logo}
-              isActive={item.value.is_active}
-              onScheduleClick={editSchedulePopupClick}
-              onEditShedulerCardClick={onEditShedulerCardClick}
-              dataSchedele={item.value}
-            />)
-        }
+        <div className="container">
+          {
+            weeks['saturday'].map(item =>
+              <Card
+                key={item.value.id}
+                name={item.value.name}
+                img={item.value.logo}
+                isActive={item.value.is_active}
+                onScheduleClick={editSchedulePopupClick}
+                onEditShedulerCardClick={onEditShedulerCardClick}
+                dataSchedele={item.value}
+              />)
+          }
+        </div>
       </section>
+
       <section className="week-day">
         <h2 className="week-day__title">Воскресенье</h2>
-        {
-          weeks['sunday'].map((item) =>
-            <Card
-              key={item.value.ID}
-              name={item.value.description}
-              img={item.value.logo}
-              isActive={item.value.is_active}
-              onScheduleClick={editSchedulePopupClick}
-              onEditShedulerCardClick={onEditShedulerCardClick}
-              dataSchedele={item.value}
-            />)
-        }
+        <div className="container">
+          {
+            weeks['sunday'].map(item =>
+              <Card
+                key={item.value.id}
+                name={item.value.name}
+                img={item.value.logo}
+                isActive={item.value.is_active}
+                onScheduleClick={editSchedulePopupClick}
+                onEditShedulerCardClick={onEditShedulerCardClick}
+                dataSchedele={item.value}
+              />)
+          }
+        </div>
       </section>
     </main>
   );

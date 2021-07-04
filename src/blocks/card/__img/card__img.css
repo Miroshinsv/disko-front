@@ -1,0 +1,6 @@
+.card__img {
+  max-width: 90%;
+  object-fit: cover;
+  margin: 0 5%;
+  padding: 0;
+}
