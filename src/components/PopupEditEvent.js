@@ -95,7 +95,7 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule 
                     <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
 
                 </fieldset>
-                <input className="form__btn-exit hover-opacity" type="submit" name="submit" value="Редактировать" />
+                <input className="form__btn-submit" type="submit" name="submit" value="Редактировать" />
                 <button className="form__btn-exit"  type="reset" onClick={onClose}/>
             </form>
         </section>
