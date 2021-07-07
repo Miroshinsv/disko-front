@@ -11,7 +11,7 @@ export const BASE_URL = 'https://mighty-beach-02870.herokuapp.com';
 
 // 1. Регистрация пользователя.
 export const register = ({first_name, last_name, Email, Password, Phone, Role}) => {
-    console.log(`ApiAuth (func 1) | ${ first_name, last_name, Email, Password, Phone, Role }`);
+    // console.log(`ApiAuth (func 1) | ${ Role, first_name, last_name, Email, Password, Phone }`);
 
     return fetch(`${BASE_URL}/auth/register/`, {
         method: "POST",
@@ -22,7 +22,7 @@ export const register = ({first_name, last_name, Email, Password, Phone, Role}) 
 
 // 2. Авторизация пользователя.
 export const login = ({email, password}) => {
-    console.log(`ApiAuth (func 2)| key: ${password}, user: ${email}`);
+    // console.log(`ApiAuth (func 2)| key: ${password}, user: ${email}`);
     return fetch(`${BASE_URL}/auth/login/`, {
         method: "POST",
         headers,
@@ -44,7 +44,7 @@ export const getContent = (xToken) => {
 
 // 4. Добавить дискотеку
 export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_active}, xToken) => {
- console.log(xToken);
+ // console.log(xToken);
     return fetch(`${BASE_URL}/events/add/`, {
         method: "POST",
         headers: {

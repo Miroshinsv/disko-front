@@ -1,6 +1,5 @@
 import React from "react";
 import { Redirect, Switch, Route, useHistory } from "react-router-dom";
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 import Main from "./Main";
 import PopupAddEvent from "./PopupAddEvent";
@@ -31,7 +30,7 @@ function App() {
         }
     }, [history, loggedIn]);
 
-    // 1. Регистрация пользовотеля
+    // 1. Регистрация пользователя
     const onRegister = (registerData) => {
         console.log(`Попытка регистрации, log: ${registerData}`)
 
@@ -46,7 +45,7 @@ function App() {
             });
     }
 
-    // 2. Авторидзация пользовотеля
+    // 2. Авторидзация пользователя
     const onLogin = (loginData) => {
 
         return ApiAuth
@@ -79,6 +78,13 @@ function App() {
                 console.log('Код ошибки:', err);
                 console.log(`Справочник ошибок ${directoryHTTP}`)
             });
+    }
+
+    // . Разлогинить пользователя
+    const onLogout = () => {
+      setLoggedIn(false);
+      localStorage.clear();
+      console.log('Пользователь разлогирован');
     }
 
     // . Обновить расписание
@@ -142,6 +148,7 @@ function App() {
               <ProtectedRoute
                   exact
                   isLoggedIn={loggedIn}
+                  onLogout={onLogout}
                   component={Main}
                   path={"/disco-events"}
                   addCardPopupClik={handleAddCardClick}

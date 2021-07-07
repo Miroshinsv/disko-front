@@ -1,13 +1,15 @@
 import React from "react";
 
-function Header() {
+function Header({ onLogout }) {
+  console.log(onLogout)
 
     return (
         <>
             <img scr="" alt="Логотип проека" />
-            <h1>Тут будет логотип</h1>
             <nav>
-                <h2>Тут будет навигационная панель</h2>
+              <li className="navbar__element">
+                <button className="navbar__title hover-opacity" onClick={onLogout}>Выход</button>
+              </li>
             </nav>
         </>
     );

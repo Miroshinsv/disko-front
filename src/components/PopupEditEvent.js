@@ -1,9 +1,7 @@
 import React from "react";
 
 function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule }) {
-  schedule.start_time = undefined;
   console.log('schedule', schedule);
-
     const classOpen = isOpen? 'popup_opened' : '';
     const [id, setId] = React.useState({});
     const [dataForm, setDataForm] =  React.useState({
@@ -12,14 +10,17 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule 
         time: '',
         price: '',
         avatar: '',
-        day: {value: 'monday'},
+        day: {value: ''},
         is_active: true,
         lat: null,
         lng: null,
         type_id: 11,
     });
+    console.log(dataForm)
+
 
     React.useEffect(() => {
+      console.log(schedule.days);
       setDataForm({
         discoteca: schedule.name,
         address: schedule.description,
@@ -27,9 +28,9 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule 
         price: schedule.price,
         avatar: schedule.logo,
         day: {value: schedule.days},
-        is_active: schedule.is_active,
+        // is_active: schedule.is_active,
       })
-    }, []);
+    }, [schedule]);
 
     React.useEffect(() => {
       setId({
@@ -63,33 +64,35 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule,onUpdateSchedule 
                 <fieldset className="form__set">
                     <input className="form__input form__name-event" id="" type="text" name="discoteca"
                            placeholder="Название дискотеки" onChange={handleChange} value={dataForm.discoteca}/>
-                    <span className="form__error-span" id="" />
+                    {/*<span className="form__error-span" id="" />*/}
 
                     <input className="form__input form__address" id="" type="text" name="address"
                            placeholder="Адрес" onChange={handleChange} value={dataForm.address}/>
-                    <span className="form__error-span" id="" />
+                    {/*<span className="form__error-span" id="" />*/}
 
-                    <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day}>
+                    {/*dataForm.day = {'value': ''};*/}
+                    {/*dataForm.day.value = '';*/}
+                    <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day.value}>
                         <option value="monday">Понедельник</option>
                         <option value="tuesday">Вторник</option>
                         <option value="wednesday">Среда</option>
                         <option value="thursday">Четверг</option>
-                        <option value="fridayi">Пятница</option>
+                        <option value="friday">Пятница</option>
                         <option value="saturday">Суббота</option>
                         <option value="sunday">Воскресенье</option>
                     </select>
 
                     <input className="form__input form__time" id="time" type="time" name="time"
                            placeholder="Время" onChange={handleChange} value={dataForm.time}/>
-                    <span className="form__error-span" id="" />
+                    {/*<span className="form__error-span" id="" />*/}
 
                     <input className="form__input form__price" id="" type="number" step="1" name="price"
                            placeholder="Стоимотсть" onChange={handleChange} value={dataForm.price}/>
-                    <span className="form__error-span" id="" />
+                    {/*<span className="form__error-span" id="" />*/}
 
                     <input className="form__input form__in-link" id="avatar-link" type="url" name="avatar"
                            placeholder="Ссылка на аватар" onChange={handleChange} value={dataForm.avatar}/>
-                    <span className="form__error-span" id="avatar-link-error" />
+                    {/*<span className="form__error-span" id="avatar-link-error" />*/}
 
                     <label className="form__input form__action">Активна:</label>
                     <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
