@@ -52,13 +52,13 @@ export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_a
             "X-Token": xToken,
         },
         body: JSON.stringify({
-            days: day.value,
-            description: discoteca,
+            days: day,
+            description: address,
             is_active: is_active,
             logo: avatar,
             price: price,
             start_time: time,
-            name: null,
+            name: discoteca,
             lat: null,
             lng: null,
             type_id: 11
@@ -67,10 +67,10 @@ export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_a
 }
 
 // 5. Редактировать расписание
-export const updateEvent = ({ discoteca, day, address, time, avatar, price, is_active, }, id, xToken) => {
-  console.log(`${BASE_URL}/events//update/${id}/`);
+export const updateEvent = ({ discoteca, day, address, time, avatar, price, is_active, }, {id}, xToken) => {
+  console.log(`${BASE_URL}/events/update/${id}/`);
   console.log(id)
-  return fetch(`${BASE_URL}/events//update/${id}/`, {
+  return fetch(`${BASE_URL}/events/update/${id}/`, {
     method: "POST",
     headers: {
       ...headers,
@@ -78,15 +78,26 @@ export const updateEvent = ({ discoteca, day, address, time, avatar, price, is_a
     },
     body: JSON.stringify({
       days: day.value,
-      description: discoteca,
+      description: address,
       is_active: is_active,
       logo: avatar,
       price: price,
       start_time: time,
-      name: null,
+      name: discoteca,
       lat: null,
       lng: null,
       type_id: 11
     })
   }).then(checkResponse)
 }
+//
+// //7. Состояние активности карточки расписания
+// export const stateActive = () => {
+//   return fetch(`${BASE_URL}/events/activate/${id}/`, {
+//     method: "POST",
+//     headers: {
+//       ...headers,
+//       "X-Token": xToken,
+//     },
+//   })
+// }

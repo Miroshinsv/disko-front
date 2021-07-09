@@ -90,7 +90,7 @@ function App() {
     // . Обновить расписание
     const handleUpdateSchedule = (updateData, id) => {
       const xToken = localStorage.getItem('xToken');
-      console.log(xToken)
+      console.log(id, 'получить')
 
       if (!xToken) {
         return;
