@@ -96,8 +96,9 @@ function App() {
         return;
       }
       ApiAuth.updateEvent(updateData, id, xToken)
-        .then((data) => {
-          console.log(data)
+        .then(() => {
+          tokenCheck();
+          closeAllPopups()
         })
         .catch((err) => {
           console.log('Код ошибки:', err);
@@ -132,14 +133,29 @@ function App() {
         const xToken = localStorage.getItem('xToken');
 
         ApiAuth.addNewEvent(dataCardDisco, xToken)
-            .then((newCard) => {
-                console.log(newCard);
-                setIsAddCardPopupOpen(false);
+            .then((newSchedule) => {
+              console.log(newSchedule);
+              setUsersSchedule([newSchedule, ...userSchedule]);
+              setIsAddCardPopupOpen(false);
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
                 console.log(`Справочник ошибок ${directoryHTTP}`)
             });
+    }
+
+    const handleActiveUpdate = (dataSchedele) => {
+      const xToken = localStorage.getItem('xToken');
+
+      console.log(dataSchedele, xToken, 'данные для экшена')
+        ApiAuth.onActive(dataSchedele, xToken)
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log('Код ошибки:', err);
+            console.log(`Справочник ошибок ${directoryHTTP}`)
+          });
     }
 
   return (
@@ -154,6 +170,7 @@ function App() {
                   addCardPopupClik={handleAddCardClick}
                   editSchedulePopupClick={handleEditScheduleClick}
                   onEditShedulerCardClick={handleScheduleCardClick}
+                  onCardActiveClick={handleActiveUpdate}
                   schedule={userSchedule}
               />
               <Route path={"/sign-in"}>

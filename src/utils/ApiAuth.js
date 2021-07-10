@@ -44,6 +44,8 @@ export const getContent = (xToken) => {
 
 // 4. Добавить дискотеку
 export const addNewEvent = ({ discoteca, day, address, time, avatar, price, is_active}, xToken) => {
+  // console.log(discoteca, day, address, time, avatar, price, is_active, 'test11');
+  console.log(day, 'день')
  // console.log(xToken);
     return fetch(`${BASE_URL}/events/add/`, {
         method: "POST",
@@ -90,14 +92,23 @@ export const updateEvent = ({ discoteca, day, address, time, avatar, price, is_a
     })
   }).then(checkResponse)
 }
-//
-// //7. Состояние активности карточки расписания
-// export const stateActive = () => {
-//   return fetch(`${BASE_URL}/events/activate/${id}/`, {
-//     method: "POST",
-//     headers: {
-//       ...headers,
-//       "X-Token": xToken,
-//     },
-//   })
-// }
+
+//7. Состояние активности карточки расписания
+export const onActive = ({ID, is_active}, xToken) => {
+  // console.log('АПИ', is_active, ID)
+  console.log('АПИ Токен', xToken)
+  // const isActive = false;
+  // const id = '123';
+  // const xToken = null;
+  const linkActive = is_active? 'deactivate' : 'active';
+
+  console.log(`${BASE_URL}/events/${linkActive}/${ID}/`, 'test link');
+
+  return fetch(`${BASE_URL}/events/${linkActive}/${ID}/`, {
+    method: "POST",
+    headers: {
+      ...headers,
+      "X-Token": xToken,
+    }
+  }).then(checkResponse)
+}

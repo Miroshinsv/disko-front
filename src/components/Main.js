@@ -2,7 +2,7 @@ import React from "react";
 import Header from "./Header.js";
 import Card from "./Card";
 
-function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, schedule, onLogout }) {
+function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, schedule, onLogout, onCardActiveClick }) {
 
   const weeks= {
     monday: [],
@@ -39,6 +39,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onScheduleClick={editSchedulePopupClick}
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
+                      onCardActiveClick={onCardActiveClick}
                 />)
             }
           </div>
@@ -56,6 +57,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onScheduleClick={editSchedulePopupClick}
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
+                      onCardActiveClick={onCardActiveClick}
                 />)
             }
           </div>
@@ -73,6 +75,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onScheduleClick={editSchedulePopupClick}
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
+                      onCardActiveClick={onCardActiveClick}
                 />)
             }
           </div>
@@ -90,6 +93,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onScheduleClick={editSchedulePopupClick}
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
+                      onCardActiveClick={onCardActiveClick}
                 />)
             }
           </div>
@@ -107,6 +111,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onScheduleClick={editSchedulePopupClick}
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
+                      onCardActiveClick={onCardActiveClick}
                 />)
             }
           </div>
@@ -124,6 +129,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onScheduleClick={editSchedulePopupClick}
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
+                      onCardActiveClick={onCardActiveClick}
                 />)
             }
           </div>
@@ -141,6 +147,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                 onScheduleClick={editSchedulePopupClick}
                 onEditShedulerCardClick={onEditShedulerCardClick}
                 dataSchedele={item.value}
+                onCardActiveClick={onCardActiveClick}
               />)
             }
           </div>
