@@ -33,7 +33,7 @@ export const login = ({email, password}) => {
 // 3. Получить дискотеки.
 export const getContent = (xToken) => {
     // console.log(`ApiAuth (func 3)| token: ${xToken}`);
-    return fetch(`${BASE_URL}/schedule/all/`, {
+    return fetch(`${BASE_URL}/events/get/all/`, {
         method: "GET",
         headers: {
             ...headers,
