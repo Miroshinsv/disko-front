@@ -8,6 +8,10 @@ const headers = {
 
 export const BASE_URL = 'https://mighty-beach-02870.herokuapp.com';
 
+export const getAllData = () =>{
+  return Promise.all([])
+}
+
 
 // 1. Регистрация пользователя.
 export const register = ({first_name, last_name, Email, Password, Phone, Role}) => {
@@ -33,7 +37,7 @@ export const login = ({email, password}) => {
 // 3. Получить дискотеки.
 export const getContent = (xToken) => {
     // console.log(`ApiAuth (func 3)| token: ${xToken}`);
-    return fetch(`${BASE_URL}/schedule/all/`, {
+    return fetch(`${BASE_URL}/events/get/all/`, {
         method: "GET",
         headers: {
             ...headers,

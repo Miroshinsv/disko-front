@@ -2,7 +2,19 @@ import React from "react";
 import Header from "./Header.js";
 import Card from "./Card";
 
-function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, schedule, onLogout, onCardActiveClick }) {
+function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, onLogout, onCardActiveClick, schedule }) {
+
+  // const schedule = {
+  //     name: "Обновлена 1",
+  //     days: "monday",
+  //     is_active: false,
+  //     description: "Москва",
+  //     price: "152",
+  //     start_time: "00:00",
+  //     logo: "https://i.imgur.com/WDY1Q0J.jpg",
+  //     lat: 0,
+  //     lng: 0,
+  // }
 
   const weeks= {
     monday: [],
@@ -12,14 +24,20 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
     friday: [],
     saturday: [],
     sunday: [],
+    undefined: [],
   }
 
   const one = schedule.values();
   let to = null;
 
   while (!(to = one.next()).done) {
-    weeks[to.value['days']].push(to);
+    if (to.value['days'] in weeks) {
+      weeks[to.value['days']].push(to);
+    } else {
+      weeks[undefined].push(to);
+    }
   }
+
 
   return (
     <>
@@ -154,8 +172,6 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
         </section>
       </main>
     </>
-
   );
 }
-
 export default Main;
