@@ -3,5 +3,14 @@
   flex-direction: column;
   justify-content: center;
   max-width: 882px;
+  min-height: 46px;
+  margin: 24px 0 12px 0;
+  border-radius: 4px;
+  background-color: #000000;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 29px;
   text-align: center;
+  color: #fff;
 }
