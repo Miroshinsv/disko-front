@@ -51,9 +51,10 @@ function App() {
         return ApiAuth
             .login(loginData)
             .then((token) => {
-                localStorage.setItem('xToken', token.auth); //временно надо http Only
-                localStorage.setItem('refresh', token.refresh); //временно надо http Only
-                setLoggedIn(true);
+              localStorage.setItem('xToken', token.auth); //временно надо http Only
+              localStorage.setItem('refresh', token.refresh); //временно надо http Only
+              tokenCheck();
+              setLoggedIn(true);
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
@@ -71,8 +72,8 @@ function App() {
         }
         ApiAuth.getContent(xToken)
             .then((schedule) => {
-              setUsersSchedule(schedule)
               setLoggedIn(true);
+              setUsersSchedule(schedule)
             })
             .catch((err) => {
                 console.log('Код ошибки:', err);
