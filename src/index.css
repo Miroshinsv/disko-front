@@ -11,6 +11,8 @@
 @import url(./blocks/hover-opacity/hover-opacity.css);
 /* Конец: Действие при наведении */
 
+@import url(./blocks/scroll-bar/scroll-bar.css);
+
 /* Старт: Действие при наведении */
 @import url(./blocks/container/container.css);
 /* Конец: Действие при наведении */
