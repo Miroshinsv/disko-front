@@ -1,20 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 
+function PopupAddEvent({ formTitle, isOpen, onClose, onAddCard, cities }) {
+  const classOpen = isOpen? 'popup_opened' : '';
+  const [dataForm, setDataForm] =  React.useState({
+    discoteca: '',
+    address: '',
+    time: '',
+    price: '',
+    avatar: '',
+    city: {value: '1'},
+    day: {value: 'monday'},
+    is_active: false,
+    lat: null,
+    lng: null,
+    type_id: 11
+  });
 
-function PopupAddEvent({ formTitle, isOpen, onClose, onAddCard }) {
-    const classOpen = isOpen? 'popup_opened' : '';
-    const [dataForm, setDataForm] =  React.useState({
-        discoteca: '',
-        address: '',
-        time: '',
-        price: '',
-        avatar: '',
-        day: {value: 'monday'},
-        is_active: false,
-        lat: null,
-        lng: null,
-        type_id: 11
-    });
+  const listCity = cities.map(city =>
+    <option value={city.ID}>{city.city_name}</option>
+  );
 
     const handleChange = (e) => {
         const target = e.target;
@@ -48,6 +52,10 @@ function PopupAddEvent({ formTitle, isOpen, onClose, onAddCard }) {
                     <input className="form__input form__address" id="" type="text" name="address"
                            placeholder="Адрес" onChange={handleChange} value={dataForm.address}/>
                     {/*<span className="form__error-span" id="" />*/}
+
+                    <select className="form__input form__day" name="city" onChange={handleChange} value={dataForm.city}>
+                      {listCity}
+                    </select>
 
                     <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day}>
                         <option value="monday">Понедельник</option>

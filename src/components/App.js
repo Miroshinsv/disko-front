@@ -8,6 +8,7 @@ import Header from "./Header";
 import Register from "./Register";
 import Login from "./Login";
 import * as ApiAuth from "../utils/ApiAuth";
+import * as API from "../utils/API";
 import { directoryHTTP } from "../utils/constants";
 import ProtectedRoute from "./ProtectedRoute";
 
@@ -17,8 +18,10 @@ function App() {
     const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
     const [isEditSchedulePopupOpen, setIsEditSchedulePopupOpen] = React.useState(false);
     const [userSchedule , setUsersSchedule] = React.useState([]);
+    const [city , setCity] = React.useState([])
     const [cardScheduleData, setCardScheduleData] = React.useState({});
     const history =  useHistory();
+
 
     React.useEffect(() => {
         tokenCheck();
@@ -29,6 +32,20 @@ function App() {
             history.push('/disco-events');
         }
     }, [history, loggedIn]);
+
+  // Запрашиваем города
+  const cities = () => {
+
+    return API
+      .pullCities()
+      .then(cities => {
+        setCity(cities);
+      })
+      .catch((err) => {
+        console.log('Код ошибки:', err);
+        console.log(`Справочник ошибок ${directoryHTTP}`)
+      });
+  }
 
     // 1. Регистрация пользователя
     const onRegister = (registerData) => {
@@ -65,7 +82,6 @@ function App() {
     // 3. Проверка токена
     const tokenCheck = () => {
         const xToken = localStorage.getItem('xToken');
-        console.log(xToken)
 
         if (!xToken) {
             return;
@@ -112,15 +128,18 @@ function App() {
       setIsAddCardPopupOpen(false);
       setIsEditSchedulePopupOpen(false);
       setCardScheduleData({});
+      setCity([]);
     }
 
     // 5. Открыть попап добавления расписания дискотеки
     const handleAddCardClick = () => {
+        cities();
         setIsAddCardPopupOpen(true);
     }
 
   // . Открыть попап редактирования расписания
     const handleEditScheduleClick = () => {
+      cities();
       setIsEditSchedulePopupOpen(true);
     }
 
@@ -186,12 +205,14 @@ function App() {
           </Switch>
         <PopupAddEvent
           formTitle={'Добавить мероприятие'}
+          cities={city}
           onClose={closeAllPopups}
           isOpen={isAddCardPopupOpen}
           onAddCard={handleAddCard}
         />
         <PopupEditEvent
           formTitle={'Редактировать мероприятие'}
+          cities={city}
           onClose={closeAllPopups}
           schedule={cardScheduleData}
           isOpen={isEditSchedulePopupOpen}

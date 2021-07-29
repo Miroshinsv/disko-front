@@ -1,7 +1,7 @@
 import React from "react";
 
 function Header({ onLogout }) {
-  console.log(onLogout)
+  // console.log(onLogout)
 
     return (
         <>
