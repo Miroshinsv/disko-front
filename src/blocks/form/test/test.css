@@ -1,0 +1,27 @@
+.test {
+  height: 400px;
+  overflow-y: auto;
+  scroll-snap-type: y;
+
+
+}
+
+.test::-webkit-scrollbar {
+  width: 12px;
+}
+
+.test::-webkit-scrollbar-track {
+  background: #d4d4d4;
+  border-radius: 8px;
+}
+
+.test::-webkit-scrollbar-thumb {
+  background: #939393;
+  border-radius: 8px;
+  border: 3px solid #d4d4d4;
+  margin: 2px;
+}
+
+.test::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}

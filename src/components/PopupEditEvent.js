@@ -60,7 +60,7 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
       <form className="form" onSubmit={handleSubmit}>
         <h2 className="form__title">{formTitle}</h2>
 
-        <fieldset className="form__set">
+        <fieldset className="form__set test">
           <label className="form__input form__action">Название:</label>
           <input className="form__input form__name-event" id="" type="text" name="discoteca"
             placeholder="Название дискотеки" onChange={handleChange} value={dataForm.discoteca} />
