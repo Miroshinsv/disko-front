@@ -2,19 +2,7 @@ import React from "react";
 import Header from "./Header.js";
 import Card from "./Card";
 
-function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, onLogout, onCardActiveClick, schedule }) {
-
-  // const schedule = {
-  //     name: "Обновлена 1",
-  //     days: "monday",
-  //     is_active: false,
-  //     description: "Москва",
-  //     price: "152",
-  //     start_time: "00:00",
-  //     logo: "https://i.imgur.com/WDY1Q0J.jpg",
-  //     lat: 0,
-  //     lng: 0,
-  // }
+function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClick, onLogout, onCardActiveClick, onCardDelete, schedule }) {
 
   const weeks= {
     monday: [],
@@ -38,11 +26,10 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
     }
   }
 
-
   return (
     <>
       <Header linkTitle="" path='/sign-in' onLogout={onLogout}/>
-      <main className="content">
+      <main className="content block-size">
         <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
 
         <section className="week-day">
@@ -58,6 +45,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
                       onCardActiveClick={onCardActiveClick}
+                      onCardDelete={onCardDelete}
                 />)
             }
           </div>
@@ -76,6 +64,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
                       onCardActiveClick={onCardActiveClick}
+                      onCardDelete={onCardDelete}
                 />)
             }
           </div>
@@ -94,6 +83,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
                       onCardActiveClick={onCardActiveClick}
+                      onCardDelete={onCardDelete}
                 />)
             }
           </div>
@@ -112,6 +102,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
                       onCardActiveClick={onCardActiveClick}
+                      onCardDelete={onCardDelete}
                 />)
             }
           </div>
@@ -130,6 +121,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
                       onCardActiveClick={onCardActiveClick}
+                      onCardDelete={onCardDelete}
                 />)
             }
           </div>
@@ -148,6 +140,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                       onEditShedulerCardClick={onEditShedulerCardClick}
                       dataSchedele={item.value}
                       onCardActiveClick={onCardActiveClick}
+                      onCardDelete={onCardDelete}
                 />)
             }
           </div>
@@ -166,6 +159,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
                 onEditShedulerCardClick={onEditShedulerCardClick}
                 dataSchedele={item.value}
                 onCardActiveClick={onCardActiveClick}
+                onCardDelete={onCardDelete}
               />)
             }
           </div>

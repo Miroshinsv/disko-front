@@ -11,6 +11,7 @@ import * as ApiAuth from "../utils/ApiAuth";
 import * as API from "../utils/API";
 import { directoryHTTP } from "../utils/constants";
 import ProtectedRoute from "./ProtectedRoute";
+import {scheduleDelete} from "../utils/API";
 
 function App() {
 
@@ -164,18 +165,34 @@ function App() {
             });
     }
 
+    // Обновить статут мероприятия
     const handleActiveUpdate = (dataSchedele) => {
       const xToken = localStorage.getItem('xToken');
+      // console.log(dataSchedele, xToken, 'данные для экшена')
 
-      console.log(dataSchedele, xToken, 'данные для экшена')
-        ApiAuth.onActive(dataSchedele, xToken)
-          .then((data) => {
-            console.log(data);
-          })
-          .catch((err) => {
-            console.log('Код ошибки:', err);
-            console.log(`Справочник ошибок ${directoryHTTP}`)
+      ApiAuth.onActive(dataSchedele, xToken)
+        .then((newSchedule) => {
+          setUsersSchedule();
+        })
+        .catch((err) => {
+          console.log('Код ошибки:', err);
+          console.log(`Справочник ошибок ${directoryHTTP}`)
           });
+    }
+
+    const handleScheduleDelete = (dataSchedele) => {
+      const xToken = localStorage.getItem('xToken');
+      console.log(dataSchedele, xToken, 'данные для экшена')
+
+      API.scheduleDelete(dataSchedele, xToken)
+        .then((res) => {
+          console.log(res);
+          // setUsersSchedule((state) => state.pop((schedule) => schedule));
+        })
+        .catch((err) => {
+          console.log('Код ошибки:', err);
+          console.log(`Справочник ошибок ${directoryHTTP}`)
+        });
     }
 
   return (
@@ -191,6 +208,7 @@ function App() {
                   editSchedulePopupClick={handleEditScheduleClick}
                   onEditShedulerCardClick={handleScheduleCardClick}
                   onCardActiveClick={handleActiveUpdate}
+                  onCardDelete={handleScheduleDelete}
                   schedule={userSchedule}
               />
               <Route path={"/sign-in"}>

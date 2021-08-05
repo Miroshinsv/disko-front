@@ -4,6 +4,7 @@
 
 /* Старт: Действие при наведении */
 @import url(./blocks/root/root.css);
+@import url(./blocks/block-size/block-size.css);
 @import url(./blocks/content/content.css);
 /* Конец: Действие при наведении */
 
@@ -12,6 +13,9 @@
 /* Конец: Действие при наведении */
 
 @import url(./blocks/scroll-bar/scroll-bar.css);
+
+@import url(./blocks/header/header.css);
+@import url(./blocks/header/__logo/header__logo.css);
 
 /* Старт: Действие при наведении */
 @import url(./blocks/container/container.css);
@@ -24,6 +28,9 @@
 
 /* Старт: Карточка */
 @import url(./blocks/card/card.css);
+@import url(./blocks/card/__action/card__action.css);
+@import url(./blocks/card/__action/_active/card__action_active.css);
+@import url(./blocks/card/__action/_deactivate/card__action_deactivate.css);
 @import url(./blocks/card/__title/card__title.css);
 @import url(./blocks/card/__img/card__img.css);
 @import url(./blocks/card/__btn-active/card__btn-active.css);

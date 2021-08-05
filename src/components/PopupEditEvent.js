@@ -1,7 +1,7 @@
 import React from "react";
 
 function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule }) {
-  console.log('schedule', schedule);
+
   const classOpen = isOpen ? 'popup_opened' : '';
   const [id, setId] = React.useState({ id: '' });
   const [dataForm, setDataForm] = React.useState({
@@ -16,10 +16,8 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
     lng: null,
     type_id: 11,
   });
-  console.log(dataForm)
 
   React.useEffect(() => {
-    console.log(schedule.days);
     setDataForm({
       discoteca: schedule.name,
       address: schedule.description,
@@ -61,19 +59,19 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
         <h2 className="form__title">{formTitle}</h2>
 
         <fieldset className="form__set scrollbar">
-          <label className="form__input form__action">Название:</label>
+          <label className="form__label">Название:</label>
           <input className="form__input form__name-event" id="" type="text" name="discoteca"
             placeholder="Название дискотеки" onChange={handleChange} value={dataForm.discoteca} />
           {/*<span className="form__error-span" id="" />*/}
 
-          <label className="form__input form__action">Адрес:</label>
+          <label className="form__label">Адрес:</label>
           <input className="form__input form__address" id="" type="text" name="address"
             placeholder="Адрес" onChange={handleChange} value={dataForm.address} />
           {/*<span className="form__error-span" id="" />*/}
 
           {/*dataForm.day = {'value': ''};*/}
           {/*dataForm.day.value = '';*/}
-          <label className="form__input form__action">День:</label>
+          <label className="form__label">День:</label>
           <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day.value}>
             <option value="monday">Понедельник</option>
             <option value="tuesday">Вторник</option>
@@ -84,22 +82,22 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
             <option value="sunday">Воскресенье</option>
           </select>
 
-          <label className="form__input form__action">Время:</label>
-          <input className="form__input form__time" id="time" type="time" name="time"
+          <label className="form__label">Время:</label>
+          <input className="form__input form__time" id="time" type="text" name="time"
             placeholder="Время" onChange={handleChange} value={dataForm.time} />
           {/*<span className="form__error-span" id="" />*/}
 
-          <label className="form__input form__action">Стоимость:</label>
-          <input className="form__input form__price" id="" type="number" step="1" name="price"
-            placeholder="Стоимотсть" onChange={handleChange} value={dataForm.price} />
+          <label className="form__label">Стоимость:</label>
+          <input className="form__input form__price" id="" type="text" step="1" name="price"
+                 placeholder="Стоимотсть" onChange={handleChange} value={dataForm.price}/>
           {/*<span className="form__error-span" id="" />*/}
 
-          <label className="form__input form__action">Обложка:</label>
+          <label className="form__label">Обложка:</label>
           <input className="form__input form__in-link" id="avatar-link" type="url" name="avatar"
             placeholder="Ссылка на аватар" onChange={handleChange} value={dataForm.avatar} />
           {/*<span className="form__error-span" id="avatar-link-error" />*/}
 
-          <label className="form__input form__action">Активна:</label>
+          <label className="form__label">Активна:</label>
           <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active} />
 
         </fieldset>

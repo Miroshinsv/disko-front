@@ -96,15 +96,11 @@ export const updateEvent = ({ discoteca, day, address, time, avatar, price, is_a
     })
   }).then(checkResponse)
 }
-
 //7. Состояние активности карточки расписания
 export const onActive = ({ID, is_active}, xToken) => {
   // console.log('АПИ', is_active, ID)
   console.log('АПИ Токен', xToken)
-  // const isActive = false;
-  // const id = '123';
-  // const xToken = null;
-  const linkActive = is_active? 'deactivate' : 'active';
+  const linkActive = is_active? 'deactivate' : 'activate';
 
   console.log(`${BASE_URL}/events/${linkActive}/${ID}/`, 'test link');
 
