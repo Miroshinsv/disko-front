@@ -2,7 +2,6 @@ import React from "react";
 import logo from '../../src/images/logoHeder.png';
 
 function Header({ onLogout }) {
-  console.log(logo)
 
     return (
         <header className="header block-size">

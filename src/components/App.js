@@ -1,4 +1,5 @@
 import React from "react";
+import {Helmet} from "react-helmet";
 import { Redirect, Switch, Route, useHistory } from "react-router-dom";
 
 import Main from "./Main";
@@ -172,7 +173,7 @@ function App() {
 
       ApiAuth.onActive(dataSchedele, xToken)
         .then((newSchedule) => {
-          setUsersSchedule();
+          tokenCheck();
         })
         .catch((err) => {
           console.log('Код ошибки:', err);
@@ -185,9 +186,8 @@ function App() {
       console.log(dataSchedele, xToken, 'данные для экшена')
 
       API.scheduleDelete(dataSchedele, xToken)
-        .then((res) => {
-          console.log(res);
-          // setUsersSchedule((state) => state.pop((schedule) => schedule));
+        .then(() => {
+          tokenCheck();
         })
         .catch((err) => {
           console.log('Код ошибки:', err);
@@ -236,6 +236,9 @@ function App() {
           isOpen={isEditSchedulePopupOpen}
           onUpdateSchedule={handleUpdateSchedule}
         />
+      <Helmet>
+        <script src="https://api-maps.yandex.ru/2.1/?apikey=42dfc515-9887-4dcc-8ae2-e9da688cf1d2&lang=ru_RU" type="text/javascript" />
+      </Helmet>
     </>
   );
 }
