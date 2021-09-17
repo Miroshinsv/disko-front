@@ -1,12 +1,7 @@
-import React from "react";
-import { YMaps, Map } from "react-yandex-maps";
+import React from "react"
+import {YMaps, Map} from "react-yandex-maps"
 
-function init() {
-  // Создаем выпадающую панель с поисковыми подсказками и прикрепляем ее к HTML-элементу по его id.
-  var suggestView1 = new YMaps.SuggestView('suggest1');
-}
-
-function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities}) {
+function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities, suggester}) {
   const classOpen = isOpen ? 'popup_opened' : '';
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
@@ -45,10 +40,6 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities}) {
     console.log(dataForm);
   }
 
-  const loadSuggest = ymaps => {
-    const suggestView = new YMaps.SuggestView("suggest");
-  };
-
   return (
     <section className={`popup ${classOpen}`}>
       <form className="form" onSubmit={handleSubmit}>
@@ -61,11 +52,11 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities}) {
 
           <input className="form__input form__address" id="" type="text" name="address"
                  placeholder="Адрес" onChange={handleChange} value={dataForm.address}/>
-          <input type="text" className="form-control" id="suggest" />
+          <input type="text" className="form-control" id="suggest"/>
           <YMaps>
             <Map
-              onLoad={(ymaps) => loadSuggest(ymaps)}
-              defaultState={{ center: [55.751574, 37.573856], zoom: 9 }}
+              onLoad={(ymaps) => suggester(ymaps)}
+              defaultState={{center: [55.751574, 37.573856], zoom: 9}}
               modules={["SuggestView"]}
             />
           </YMaps>
