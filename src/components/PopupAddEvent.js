@@ -1,7 +1,11 @@
-import React from "react"
+import React, {useEffect} from "react"
 import {YMaps, Map} from "react-yandex-maps"
+import {days, directoryHTTP} from "../utils/constants";
+import * as ApiYandexMap from "../utils/ApiYandexMap";
 
-function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities, suggester}) {
+function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester}) {
+
+
   const classOpen = isOpen ? 'popup_opened' : '';
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
@@ -17,9 +21,40 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities, suggester
     type_id: 11
   });
 
-  const listCity = cities.map(city =>
-    <option value={city.ID}>{city.city_name}</option>
-  );
+  console.log(dataForm)
+
+  const [dataCordinat, setDataCordinat] = React.useState({
+    lat: '',
+    lng: '',
+    city: '1',
+  })
+
+  console.log(dataForm, 'state');
+
+  useEffect(() =>{
+    setDataForm({
+      address: addressYndex,
+    })
+  }, [addressYndex])
+
+  React.useEffect(() => {
+    if (dataForm.address.length === 0 || 'undefined' === typeof dataForm.address) {
+      return;
+    }
+    ApiYandexMap.getJsonYMap(dataForm.address)
+      .then((dataMap) => {
+        const points = dataMap.response.GeoObjectCollection.featureMember.map((m) => {
+          return m.GeoObject.Point.pos;
+        });
+        const test = points.join().split(' ')
+        setDataCordinat( { lat: test[1], lng: test[0] });
+        console.log(dataMap);
+      })
+      .catch((err) => {
+        console.log('Код ошибки:', err);
+        console.log(`Справочник ошибок ${directoryHTTP}`)
+      });
+  }, [dataForm.address])
 
   const handleChange = (e) => {
     const target = e.target;
@@ -35,9 +70,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities, suggester
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    onAddCard(dataForm);
-
-    console.log(dataForm);
+    onAddCard(dataForm, dataCordinat);
   }
 
   return (
@@ -50,9 +83,8 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities, suggester
                  placeholder="Название дискотеки" onChange={handleChange} value={dataForm.discoteca}/>
           {/*<span className="form__error-span" id="" />*/}
 
-          <input className="form__input form__address" id="" type="text" name="address"
-                 placeholder="Адрес" onChange={handleChange} value={dataForm.address}/>
-          <input type="text" className="form-control" id="suggest"/>
+          <input className="form__input form__address" type="text" id="suggest" name="address"
+                 placeholder="Адрес" onChange={handleChange} value={dataForm.address} />
           <YMaps>
             <Map
               onLoad={(ymaps) => suggester(ymaps)}
@@ -61,10 +93,6 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, cities, suggester
             />
           </YMaps>
           {/*<span className="form__error-span" id="" />*/}
-
-          <select className="form__input form__day" name="city" onChange={handleChange} value={dataForm.city}>
-            {listCity}
-          </select>
 
           <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day}>
             <option value="monday">Понедельник</option>

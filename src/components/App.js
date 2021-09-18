@@ -15,9 +15,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import {scheduleDelete} from "../utils/API";
 
 function App() {
-  const loadSuggest = ymaps => {
-    const suggestView = new ymaps.SuggestView("suggest");
-  };
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
   const [isEditSchedulePopupOpen, setIsEditSchedulePopupOpen] = React.useState(false);
@@ -25,7 +22,16 @@ function App() {
   const [city, setCity] = React.useState([])
   const [cardScheduleData, setCardScheduleData] = React.useState({});
   const history = useHistory();
+  const [addressYndex, setAddressYndex] = React.useState('')
+  console.log(addressYndex, '0')
 
+  const loadSuggest = ymaps => {
+    const suggestView = new ymaps.SuggestView("suggest");
+    suggestView.events.add("select", (e) => {
+      console.log(e.get("item").value);
+      setAddressYndex(e.get("item").value)
+    });
+  };
 
   React.useEffect(() => {
     tokenCheck();
@@ -224,6 +230,7 @@ function App() {
         </Route>
       </Switch>
       <PopupAddEvent
+        addressYndex={addressYndex}
         suggester={loadSuggest}
         formTitle={'Добавить мероприятие'}
         cities={city}

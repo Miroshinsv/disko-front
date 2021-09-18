@@ -1,4 +1,6 @@
 import React from "react";
+import {days, directoryHTTP} from "../utils/constants";
+import * as ApiYandexMap from "../utils/ApiYandexMap";
 
 function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule }) {
 
@@ -12,10 +14,14 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
     avatar: '',
     day: { value: '' },
     is_active: true,
-    lat: null,
-    lng: null,
     type_id: 11,
   });
+
+  const [dataCordinat, setDataCordinat] = React.useState({
+    lat: '',
+    lng: '',
+    city: '1',
+  })
 
   React.useEffect(() => {
     setDataForm({
@@ -34,6 +40,25 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
       id: schedule.ID,
     })
   }, [schedule])
+
+  // React.useEffect(() => {
+  //   if (dataForm.address.length === 0 || 'undefined' === typeof dataForm.address) {
+  //     return;
+  //   }
+  //   ApiYandexMap.getJsonYMap(dataForm.address)
+  //     .then((dataMap) => {
+  //       const points = dataMap.response.GeoObjectCollection.featureMember.map((m) => {
+  //         return m.GeoObject.Point.pos;
+  //       });
+  //       const test = points.join().split(' ')
+  //       setDataCordinat( { lat: test[1], lng: test[0] });
+  //       console.log(dataMap);
+  //     })
+  //     .catch((err) => {
+  //       console.log('Код ошибки:', err);
+  //       console.log(`Справочник ошибок ${directoryHTTP}`)
+  //     });
+  // }, [dataForm.address])
 
   const handleChange = (e) => {
     const target = e.target;
