@@ -3,7 +3,9 @@ import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
 
 function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule }) {
-
+  const listDays = days.map(day =>
+    <option value={day.value}>{day.text}</option>
+  );
   const classOpen = isOpen ? 'popup_opened' : '';
   const [id, setId] = React.useState({ id: '' });
   const [dataForm, setDataForm] = React.useState({
@@ -96,15 +98,10 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
 
           {/*dataForm.day = {'value': ''};*/}
           {/*dataForm.day.value = '';*/}
+
           <label className="form__label">День:</label>
           <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day.value}>
-            <option value="monday">Понедельник</option>
-            <option value="tuesday">Вторник</option>
-            <option value="wednesday">Среда</option>
-            <option value="thursday">Четверг</option>
-            <option value="friday">Пятница</option>
-            <option value="saturday">Суббота</option>
-            <option value="sunday">Воскресенье</option>
+            {listDays}
           </select>
 
           <label className="form__label">Время:</label>

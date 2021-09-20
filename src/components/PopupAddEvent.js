@@ -2,11 +2,12 @@ import React, {useEffect} from "react"
 import {YMaps, Map} from "react-yandex-maps"
 import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
-import {findAllInRenderedTree} from "react-dom/test-utils";
 
 function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester}) {
 
-
+  const listDays = days.map(day =>
+    <option value={day.value}>{day.text}</option>
+  );
   const classOpen = isOpen ? 'popup_opened' : '';
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
@@ -26,7 +27,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     // city: '1',
   })
 
-  console.log(dataCordinat, 'кординаты')
+  // console.log(dataCordinat, 'кординаты')
   // console.log(dataForm)
   // console.log(dataForm, 'state');
 
@@ -113,13 +114,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
           {/*<span className="form__error-span" id="" />*/}
 
           <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day}>
-            <option value="monday">Понедельник</option>
-            <option value="tuesday">Вторник</option>
-            <option value="wednesday">Среда</option>
-            <option value="thursday">Четверг</option>
-            <option value="friday">Пятница</option>
-            <option value="saturday">Суббота</option>
-            <option value="sunday">Воскресенье</option>
+            {listDays}
           </select>
 
           <input className="form__input form__time" id="time" type="time" name="time"
