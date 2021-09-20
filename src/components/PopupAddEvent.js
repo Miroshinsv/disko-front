@@ -2,6 +2,7 @@ import React, {useEffect} from "react"
 import {YMaps, Map} from "react-yandex-maps"
 import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
+import {findAllInRenderedTree} from "react-dom/test-utils";
 
 function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester}) {
 
@@ -16,20 +17,18 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     city: {value: '1'},
     day: {value: 'monday'},
     is_active: false,
-    lat: null,
-    lng: null,
     type_id: 11
   });
-
-  console.log(dataForm)
 
   const [dataCordinat, setDataCordinat] = React.useState({
     lat: '',
     lng: '',
-    city: '1',
+    // city: '1',
   })
 
-  console.log(dataForm, 'state');
+  console.log(dataCordinat, 'кординаты')
+  // console.log(dataForm)
+  // console.log(dataForm, 'state');
 
   useEffect(() =>{
     setDataForm({
@@ -47,14 +46,16 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
           return m.GeoObject.Point.pos;
         });
         const test = points.join().split(' ')
+        console.log(test[1], test[0], 'test');
         setDataCordinat( { lat: test[1], lng: test[0] });
-        console.log(dataMap);
+        // console.log(dataMap);
       })
       .catch((err) => {
         console.log('Код ошибки:', err);
         console.log(`Справочник ошибок ${directoryHTTP}`)
       });
   }, [dataForm.address])
+
 
   const handleChange = (e) => {
     const target = e.target;
@@ -67,10 +68,25 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     });
   };
 
+  //Обработчик отправки ф-мы
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    onAddCard(dataForm, dataCordinat);
+    onAddCard({
+      discoteca: dataForm.discoteca,
+      address: dataForm.address,
+      time: dataForm.time,
+      price: dataForm.price,
+      avatar: dataForm.avatar,
+      city: dataForm.city,
+      day: dataForm.day,
+      is_active: dataForm.is_active,
+      type_id: dataForm.type_id,
+      lat: parseFloat(dataCordinat.lat),
+      lng: parseFloat(dataCordinat.lng),
+    });
+
+    // console.log(dataForm, dataCordinat, '1');
   }
 
   return (
@@ -78,20 +94,22 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
       <form className="form" onSubmit={handleSubmit}>
         <h2 className="form__title">{formTitle}</h2>
 
-        <fieldset className="form__set">
+        <fieldset className="form__set scrollbar">
           <input className="form__input form__name-event" id="" type="text" name="discoteca"
                  placeholder="Название дискотеки" onChange={handleChange} value={dataForm.discoteca}/>
           {/*<span className="form__error-span" id="" />*/}
 
           <input className="form__input form__address" type="text" id="suggest" name="address"
                  placeholder="Адрес" onChange={handleChange} value={dataForm.address} />
-          <YMaps>
-            <Map
-              onLoad={(ymaps) => suggester(ymaps)}
-              defaultState={{center: [55.751574, 37.573856], zoom: 9}}
-              modules={["SuggestView"]}
-            />
-          </YMaps>
+          <div className="form__maps">
+            <YMaps>
+              <Map
+                onLoad={(ymaps) => suggester(ymaps)}
+                defaultState={{center: [55.751574, 37.573856], zoom: 15, width: '220px'}}
+                modules={["SuggestView"]}
+              />
+            </YMaps>
+          </div>
           {/*<span className="form__error-span" id="" />*/}
 
           <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day}>

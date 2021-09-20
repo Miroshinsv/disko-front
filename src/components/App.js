@@ -23,7 +23,6 @@ function App() {
   const [cardScheduleData, setCardScheduleData] = React.useState({});
   const history = useHistory();
   const [addressYndex, setAddressYndex] = React.useState('')
-  console.log(addressYndex, '0')
 
   const loadSuggest = ymaps => {
     const suggestView = new ymaps.SuggestView("suggest");
@@ -161,8 +160,10 @@ function App() {
   // Добавить карточку дискотеки
   const handleAddCard = (dataCardDisco) => {
     const xToken = localStorage.getItem('xToken');
+    console.log(dataCardDisco, '2');
 
     ApiAuth.addNewEvent(dataCardDisco, xToken)
+
       .then((newSchedule) => {
         console.log(newSchedule);
         setUsersSchedule([newSchedule, ...userSchedule]);

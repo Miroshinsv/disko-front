@@ -11,7 +11,7 @@ export const config = {
 }
 
 export const getJsonYMap = (geocode) => {
-  console.log('getJsonYMap', `${config.url}/${config.apikey}&${config.lang}`)
+  // console.log('getJsonYMap', `${config.url}/${config.apikey}&${config.lang}`)
   return fetch(`${config.url}/${config.apikey}&${config.lang}&${config.format}&geocode=${geocode}`, {
     method: "GET",
   }).then(checkResponse)
