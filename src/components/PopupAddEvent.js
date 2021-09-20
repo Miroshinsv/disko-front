@@ -105,7 +105,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
             <YMaps>
               <Map
                 onLoad={(ymaps) => suggester(ymaps)}
-                defaultState={{center: [55.751574, 37.573856], zoom: 15, width: '220px'}}
+                defaultState={{center: [55.751574, 37.573856], zoom: 15}}
                 modules={["SuggestView"]}
               />
             </YMaps>
