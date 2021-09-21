@@ -108,7 +108,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
                 width='100%'
                 height='220px'
                 onLoad={(ymaps) => suggester(ymaps)}
-                defaultState={{center: [55.751574, 37.573856], zoom: 5}}
+                defaultState={{center: [55.751574, 37.573856], zoom: 9}}
                 modules={["SuggestView"]}
               >
                 //временно фиктивные данные
