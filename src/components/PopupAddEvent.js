@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-import {YMaps, Map} from "react-yandex-maps"
+import {YMaps, Map, Placemark} from "react-yandex-maps"
 import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
 
@@ -108,9 +108,12 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
                 width='100%'
                 height='220px'
                 onLoad={(ymaps) => suggester(ymaps)}
-                defaultState={{center: [55.751574, 37.573856], zoom: 15}}
+                defaultState={{center: [55.751574, 37.573856], zoom: 5}}
                 modules={["SuggestView"]}
-              />
+              >
+                //временно фиктивные данные
+                <Placemark geometry={[55.782309, 37.580220]} />
+              </Map>
             </YMaps>
           </div>
           {/*<span className="form__error-span" id="" />*/}
