@@ -27,7 +27,8 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     // city: '1',
   })
 
-  // console.log(dataCordinat, 'кординаты')
+  console.log(dataCordinat.lng, 'кординаты Y');
+  console.log(dataCordinat.lat, 'кординаты X');
   // console.log(dataForm)
   // console.log(dataForm, 'state');
 
@@ -105,14 +106,13 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
           <div className="form__maps">
             <YMaps>
               <Map
-                width='100%'
+                width='auto'
                 height='220px'
                 onLoad={(ymaps) => suggester(ymaps)}
                 defaultState={{center: [55.751574, 37.573856], zoom: 9}}
                 modules={["SuggestView"]}
               >
-                //временно фиктивные данные
-                <Placemark geometry={[55.782309, 37.580220]} />
+                <Placemark geometry={[dataCordinat.lng, dataCordinat.lng]} />
               </Map>
             </YMaps>
           </div>
