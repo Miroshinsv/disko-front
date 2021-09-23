@@ -127,7 +127,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
           {/*<span className="form__error-span" id="" />*/}
 
           <input className="form__input form__price" id="" type="number" step="1" name="price"
-                 placeholder="Стоимотсть" onChange={handleChange} value={dataForm.price}/>
+                 placeholder="Стоимость" onChange={handleChange} value={dataForm.price}/>
           {/*<span className="form__error-span" id="" />*/}
 
           <input className="form__input form__in-link" id="avatar-link" type="url" name="avatar"
