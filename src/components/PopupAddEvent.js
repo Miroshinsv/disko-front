@@ -112,7 +112,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
                 width='auto'
                 height='220px'
                 onLoad={(ymaps) => suggester(ymaps)}
-                defaultState={{center: [37.644899, 55.716798], zoom: 9}}
+                defaultState={{center: [37.644899, 55.716798], zoom: 1}}
                 modules={["SuggestView"]}
               >
                 {listPlacemark}
