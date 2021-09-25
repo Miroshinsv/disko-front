@@ -1,14 +1,14 @@
-import React, {useEffect} from "react"
+import React from "react"
 import {YMaps, Map, Placemark} from "react-yandex-maps"
 import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
 
 function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester}) {
-
+  const classOpen = isOpen ? 'popup_opened' : '';
   const listDays = days.map(day =>
     <option value={day.value}>{day.text}</option>
   );
-  const classOpen = isOpen ? 'popup_opened' : '';
+  const [placemarks, setPlacemarks] = React.useState([]);
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
     address: '',
@@ -20,19 +20,19 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     is_active: false,
     type_id: 11
   });
-
   const [dataCordinat, setDataCordinat] = React.useState({
+    geometry: [],
     lat: '',
     lng: '',
     // city: '1',
-  })
+  });
 
-  console.log(dataCordinat.lng, 'кординаты Y');
-  console.log(dataCordinat.lat, 'кординаты X');
-  // console.log(dataForm)
-  // console.log(dataForm, 'state');
+  const listPlacemark = placemarks.map((m) => {
+    return m;
+  });
 
-  useEffect(() =>{
+
+  React.useEffect(() =>{
     setDataForm({
       address: addressYndex,
     })
@@ -47,10 +47,13 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
         const points = dataMap.response.GeoObjectCollection.featureMember.map((m) => {
           return m.GeoObject.Point.pos;
         });
-        const test = points.join().split(' ')
-        console.log(test[1], test[0], 'test');
-        setDataCordinat( { lat: test[1], lng: test[0] });
-        // console.log(dataMap);
+
+        const coordinate = points.join().split(' ');
+        // const point =
+        setDataCordinat( { lat: coordinate[1], lng: coordinate[0]});
+        setPlacemarks([<Placemark key={0} geometry={[coordinate[1], coordinate[0]]} />]);
+
+        // console.log(coordinate[1], coordinate[0], 'test');
       })
       .catch((err) => {
         console.log('Код ошибки:', err);
@@ -109,10 +112,10 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
                 width='auto'
                 height='220px'
                 onLoad={(ymaps) => suggester(ymaps)}
-                defaultState={{center: [55.751574, 37.573856], zoom: 9}}
+                defaultState={{center: [37.644899, 55.716798], zoom: 9}}
                 modules={["SuggestView"]}
               >
-                <Placemark geometry={[dataCordinat.lng, dataCordinat.lng]} />
+                {listPlacemark}
               </Map>
             </YMaps>
           </div>

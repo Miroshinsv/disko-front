@@ -204,6 +204,7 @@ function App() {
       });
   }
 
+  //Рендер
   return (
     <>
       <Switch>
@@ -254,6 +255,5 @@ function App() {
     </>
   );
 }
-
 
 export default App;
