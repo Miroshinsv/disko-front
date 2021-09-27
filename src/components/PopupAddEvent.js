@@ -3,11 +3,16 @@ import {YMaps, Map, Placemark} from "react-yandex-maps"
 import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
 
-function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester}) {
+function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester, eventTypes}) {
+
   const classOpen = isOpen ? 'popup_opened' : '';
   const listDays = days.map(day =>
     <option value={day.value}>{day.text}</option>
   );
+  const listTypes = eventTypes.map(type =>
+    <option value={type.ID}>{type.EventsTypeName}</option>
+  );
+
   const [placemarks, setPlacemarks] = React.useState([]);
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
@@ -18,7 +23,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     city: {value: '1'},
     day: {value: 'monday'},
     is_active: false,
-    type_id: 11
+    type_id: {value: 10}
   });
   const [dataCordinat, setDataCordinat] = React.useState({
     geometry: [],
@@ -26,11 +31,9 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     lng: '',
     // city: '1',
   });
-
   const listPlacemark = placemarks.map((m) => {
     return m;
   });
-
 
   React.useEffect(() =>{
     setDataForm({
@@ -60,7 +63,6 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
         console.log(`Справочник ошибок ${directoryHTTP}`)
       });
   }, [dataForm.address])
-
 
   const handleChange = (e) => {
     const target = e.target;
@@ -100,6 +102,10 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
         <h2 className="form__title">{formTitle}</h2>
 
         <fieldset className="form__set scrollbar">
+          <select className="form__input form__event-type" name="type_id" onChange={handleChange} value={dataForm.type_id}>
+            {listTypes}
+          </select>
+
           <input className="form__input form__name-event" id="" type="text" name="discoteca"
                  placeholder="Название дискотеки" onChange={handleChange} value={dataForm.discoteca}/>
           {/*<span className="form__error-span" id="" />*/}

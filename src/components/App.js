@@ -12,7 +12,6 @@ import * as ApiAuth from "../utils/ApiAuth";
 import * as API from "../utils/API";
 import {directoryHTTP} from "../utils/constants";
 import ProtectedRoute from "./ProtectedRoute";
-import {scheduleDelete} from "../utils/API";
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -20,6 +19,7 @@ function App() {
   const [isEditSchedulePopupOpen, setIsEditSchedulePopupOpen] = React.useState(false);
   const [userSchedule, setUsersSchedule] = React.useState([]);
   const [city, setCity] = React.useState([])
+  const [evtTypes, setEvtTypes] = React.useState([]);
   const [cardScheduleData, setCardScheduleData] = React.useState({});
   const history = useHistory();
   const [addressYndex, setAddressYndex] = React.useState('')
@@ -49,6 +49,21 @@ function App() {
       .pullCities()
       .then(cities => {
         setCity(cities);
+      })
+      .catch((err) => {
+        console.log('Код ошибки:', err);
+        console.log(`Справочник ошибок ${directoryHTTP}`)
+      });
+  }
+
+  // Запрашиваем типы мероприятий
+  const eventsType = () => {
+    const xToken = localStorage.getItem('xToken');
+
+    return API
+      .pullTypesEvent(xToken)
+      .then((evtTypes) => {
+        setEvtTypes(evtTypes);
       })
       .catch((err) => {
         console.log('Код ошибки:', err);
@@ -143,6 +158,7 @@ function App() {
   // 5. Открыть попап добавления расписания дискотеки
   const handleAddCardClick = () => {
     cities();
+    eventsType();
     setIsAddCardPopupOpen(true);
   }
 
@@ -236,6 +252,7 @@ function App() {
         suggester={loadSuggest}
         formTitle={'Добавить мероприятие'}
         cities={city}
+        eventTypes={evtTypes}
         onClose={closeAllPopups}
         isOpen={isAddCardPopupOpen}
         onAddCard={handleAddCard}
@@ -243,6 +260,7 @@ function App() {
       <PopupEditEvent
         formTitle={'Редактировать мероприятие'}
         cities={city}
+        eventTypes={evtTypes}
         onClose={closeAllPopups}
         schedule={cardScheduleData}
         isOpen={isEditSchedulePopupOpen}
