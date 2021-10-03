@@ -22,7 +22,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     avatar: '',
     city: {value: '1'},
     day: {value: 'monday'},
-    is_active: false,
+    is_active: true,
     type_id: {value: 10}
   });
   const [dataCordinat, setDataCordinat] = React.useState({
@@ -63,6 +63,21 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
         console.log(`Справочник ошибок ${directoryHTTP}`)
       });
   }, [dataForm.address])
+
+  const handleOnClick = () => {
+    onClose();
+    setDataForm({
+        discoteca: '',
+        address: '',
+        time: '',
+        price: '',
+        avatar: '',
+        city: {value: '1'},
+        day: {value: 'monday'},
+        is_active: true,
+        type_id: {value: 10}
+      });
+  };
 
   const handleChange = (e) => {
     const target = e.target;
@@ -148,7 +163,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
 
         </fieldset>
         <input className="form__btn-submit hover-opacity" type="submit" name="submit" value="Добавить мероприятие"/>
-        <button className="form__btn-exit" type="reset" onClick={onClose}/>
+        <button className="form__btn-exit" type="reset" onClick={handleOnClick}/>
       </form>
     </section>
   );
