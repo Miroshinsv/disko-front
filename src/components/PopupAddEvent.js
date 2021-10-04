@@ -13,6 +13,14 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     <option value={type.ID}>{type.EventsTypeName}</option>
   );
 
+  const defaultMap = {
+    center: [37.644899, 55.716798],
+    zoom: 1
+  };
+  console.log(defaultMap, 'Дефолт кординат');
+
+  const [stateMap, setStateMap] = React.useState();
+  console.log(stateMap, 'Активный кординат');
   const [placemarks, setPlacemarks] = React.useState([]);
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
@@ -35,6 +43,8 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     return m;
   });
 
+  console.log(dataForm, '000');
+
   React.useEffect(() =>{
     setDataForm({
       address: addressYndex,
@@ -54,8 +64,11 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
         const coordinate = points.join().split(' ');
         // const point =
         setDataCordinat( { lat: coordinate[1], lng: coordinate[0]});
-        setPlacemarks([<Placemark key={0} geometry={[coordinate[1], coordinate[0]]} />]);
-
+        setPlacemarks([<Placemark
+          key={0}
+          geometry={[coordinate[1], coordinate[0]]}
+        />]);
+        setStateMap({center: [coordinate[1], coordinate[0]], zoom: 9})
         // console.log(coordinate[1], coordinate[0], 'test');
       })
       .catch((err) => {
@@ -133,7 +146,8 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
                 width='auto'
                 height='220px'
                 onLoad={(ymaps) => suggester(ymaps)}
-                defaultState={{center: [37.644899, 55.716798], zoom: 1}}
+                defaultState={defaultMap}
+                state={stateMap}
                 modules={["SuggestView"]}
               >
                 {listPlacemark}
