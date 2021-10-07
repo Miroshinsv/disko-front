@@ -7,7 +7,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
 
   const classOpen = isOpen ? 'popup_opened' : '';
   const listDays = days.map(day =>
-    <option value={day.value}>{day.text}</option>
+    <option className="select__options" value={day.value}>{day.text}</option>
   );
   const listTypes = eventTypes.map(type =>
     <option value={type.ID}>{type.EventsTypeName}</option>
@@ -130,7 +130,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
         <h2 className="form__title">{formTitle}</h2>
 
         <fieldset className="form__set scrollbar">
-          <select className="form__input form__event-type" name="type_id" onChange={handleChange} value={dataForm.type_id}>
+          <select className="select form__event-type" name="type_id" onChange={handleChange} value={dataForm.type_id}>
             {listTypes}
           </select>
 
@@ -156,7 +156,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
           </div>
           {/*<span className="form__error-span" id="" />*/}
 
-          <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day}>
+          <select className="select form__day" name="day" onChange={handleChange} value={dataForm.day}>
             {listDays}
           </select>
 
@@ -172,7 +172,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
                  placeholder="Ссылка на аватар" onChange={handleChange} value={dataForm.avatar}/>
           {/*<span className="form__error-span" id="avatar-link-error" />*/}
 
-          <label className="form__input form__action">Активна:</label>
+          <label className="form__label form__action">Активна:</label>
           <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
 
         </fieldset>

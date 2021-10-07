@@ -96,9 +96,6 @@ function PopupEditEvent({ formTitle, isOpen, onClose, schedule, onUpdateSchedule
             placeholder="Адрес" onChange={handleChange} value={dataForm.address} />
           {/*<span className="form__error-span" id="" />*/}
 
-          {/*dataForm.day = {'value': ''};*/}
-          {/*dataForm.day.value = '';*/}
-
           <label className="form__label">День:</label>
           <select className="form__input form__day" name="day" onChange={handleChange} value={dataForm.day.value}>
             {listDays}
