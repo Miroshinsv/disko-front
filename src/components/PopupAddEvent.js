@@ -68,7 +68,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
           key={0}
           geometry={[coordinate[1], coordinate[0]]}
         />]);
-        setStateMap({center: [coordinate[1], coordinate[0]], zoom: 9})
+        setStateMap({center: [coordinate[1], coordinate[0]], zoom: 15})
         // console.log(coordinate[1], coordinate[0], 'test');
       })
       .catch((err) => {
