@@ -52,3 +52,6 @@
 @import url(./blocks/popup/popup.css);
 @import url(./blocks/popup/_opened/popup_opened.css);
 /* Конец: Попап */
+
+@import url(./blocks/checkbox/checkbox.css);
+@import url(./blocks/checkbox/__element/checkbox__element.css);

@@ -1,4 +1,5 @@
 import React from "react"
+import CheckboxSlider from "./CheckboxSlider";
 import {YMaps, Map, Placemark} from "react-yandex-maps"
 import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
@@ -17,10 +18,10 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     center: [37.644899, 55.716798],
     zoom: 1
   };
-  console.log(defaultMap, 'Дефолт кординат');
+  // console.log(defaultMap, 'Дефолт кординат');
 
   const [stateMap, setStateMap] = React.useState();
-  console.log(stateMap, 'Активный кординат');
+  // console.log(stateMap, 'Активный кординат');
   const [placemarks, setPlacemarks] = React.useState([]);
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
@@ -43,7 +44,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     return m;
   });
 
-  console.log(dataForm, '000');
+  // console.log(dataForm, '000');
 
   React.useEffect(() =>{
     setDataForm({
@@ -121,7 +122,6 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
       lng: parseFloat(dataCordinat.lng),
     });
 
-    // console.log(dataForm, dataCordinat, '1');
   }
 
   return (
@@ -172,9 +172,10 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
                  placeholder="Ссылка на аватар" onChange={handleChange} value={dataForm.avatar}/>
           {/*<span className="form__error-span" id="avatar-link-error" />*/}
 
-          <label className="form__label form__action">Активна:</label>
-          <input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
+          {/*<label className="form__label form__action">Активна:</label>*/}
+          {/*<input type="checkbox" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>*/}
 
+          <CheckboxSlider label="Активна" name="is_active" onChange={handleChange} checked={dataForm.is_active}/>
         </fieldset>
         <input className="form__btn-submit hover-opacity" type="submit" name="submit" value="Добавить мероприятие"/>
         <button className="form__btn-exit" type="reset" onClick={handleOnClick}/>
