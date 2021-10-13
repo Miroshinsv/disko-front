@@ -1,4 +1,5 @@
 import React from "react";
+import Accordion from "./Accordion";
 import Header from "./Header.js";
 import Card from "./Card";
 
@@ -32,6 +33,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
       <main className="content block-size">
         <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
 
+        <Accordion />
         <section className="week-day">
           <h2 className="week-day__title">Понедельник</h2>
           <div className="container">
