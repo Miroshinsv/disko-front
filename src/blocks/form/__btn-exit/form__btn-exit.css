@@ -26,6 +26,14 @@
   .form__btn-exit {
     background-size: 26px 26px;
     top: -60px;
-    right: 0px;
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .form__btn-exit {
+    /*background-size: 26px 26px;*/
+    top: 14px;
+    right: 0;
   }
 }

@@ -23,6 +23,14 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  .form {
+    width: 100%;
+    min-height: 100%;
+    border-radius: 0;
+  }
+}
+
 
 .form__maps {
   width: 90%;
