@@ -25,6 +25,7 @@
 
 @media screen and (max-width: 425px) {
   .form {
+    justify-content: space-between;
     width: 100%;
     min-height: 100%;
     border-radius: 0;
