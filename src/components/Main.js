@@ -40,17 +40,17 @@ function Main({
     } else {
       weeks[undefined].push(to);
     }
-    return (
-      <>
-        <Header linkTitle="" path='/sign-in' onLogout={onLogout}/>
-        <main className="content block-size">
-          <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
-          <Accordion/>
-          <ScheduleDay events={weeks}/>
-        </main>
-      </>
-    );
   }
+  return (
+    <>
+      <Header linkTitle="" path='/sign-in' onLogout={onLogout}/>
+      <main className="content block-size">
+        <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
+        <Accordion/>
+        <ScheduleDay events={weeks}/>
+      </main>
+    </>
+  );
 }
 
 export default Main;

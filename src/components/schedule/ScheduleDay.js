@@ -1,21 +1,28 @@
-import React, {Component} from "react";
+import React from "react";
 
-class ScheduleDay extends Component {
-  events;
+function ScheduleDay({events}) {
+  // console.log(events);
 
-  constructor({context, events}) {
-    super(context);
-    this.events = events;
+  function renderItem() {
+    Object.keys(events => {
+      return(key);
+    });
   }
+  console.log(renderItem());
 
-  render() {
-    return (
-      this.events.forEach(
-        val => <div>{val}</div>
-      )
-    )
-  }
+
+  return (
+    <section className="week-day">
+      <h2 className="week-day__title">Понедельник</h2>
+      <div className="container">
+        {
+          weeks['monday'].map(item =>
+            <SchedulerCard item={item}/>
+          )
+        }
+      </div>
+    </section>
+  );
 }
-
 
 export default ScheduleDay;
