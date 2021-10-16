@@ -50,6 +50,8 @@ function Main({ addDaysCardPopupClick, addCardPopupClik, editSchedulePopupClick,
         <Accordion />
         {renderSections}
 
+        <ScheduleDay weekDay={weeks}/>
+
         <section className="week-day">
           <h2 className="week-day__title" onClick={addDaysCardPopupClick}>Вторник</h2>
           <div className="container">

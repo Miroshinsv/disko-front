@@ -1,15 +1,14 @@
 import React from "react";
 
 
-function PopupAddDaysEvent(props) {
-  console.log(props, 'PopupAddDaysEvent')
+function PopupAddDaysEvent({ isOpen, onClose, onAddDays }) {
 
-  // const classOpen = isOpen ? 'popup_opened' : '';
+  const classOpen = isOpen ? 'popup_opened' : '';
 
-  return (<></>
-    // <section className={`popup ${classOpen}`}>
-    //
-    // </section>
+  return (
+    <section className={`popup ${classOpen}`}>
+
+    </section>
   );
 }
 
