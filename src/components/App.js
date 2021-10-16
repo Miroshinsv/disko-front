@@ -12,10 +12,12 @@ import * as ApiAuth from "../utils/ApiAuth";
 import * as API from "../utils/API";
 import {directoryHTTP} from "../utils/constants";
 import ProtectedRoute from "./ProtectedRoute";
+import PopupAddDaysEvent from "./PopupAddDaysEvent";
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [isAddCardPopupOpen, setIsAddCardPopupOpen] = React.useState(false);
+  const [isAddDaysPopupOpen, setIsAddDaysPopupOpen] = React.useState(false)
   const [isEditSchedulePopupOpen, setIsEditSchedulePopupOpen] = React.useState(false);
   const [userSchedule, setUsersSchedule] = React.useState([]);
   const [city, setCity] = React.useState([])
@@ -150,16 +152,21 @@ function App() {
   // 4. Закрыть попапы
   const closeAllPopups = () => {
     setIsAddCardPopupOpen(false);
+    setIsAddDaysPopupOpen(false)
     setIsEditSchedulePopupOpen(false);
     setCardScheduleData({});
     setCity([]);
   }
 
-  // 5. Открыть попап добавления расписания дискотеки
+  // . Открыть попап добавления расписания дискотеки
   const handleAddCardClick = () => {
     cities();
     eventsType();
     setIsAddCardPopupOpen(true);
+  }
+
+  const handleAddDaysCardClick = () => {
+    setIsAddDaysPopupOpen(true);
   }
 
   // . Открыть попап редактирования расписания
@@ -231,6 +238,7 @@ function App() {
           component={Main}
           path={"/disco-events"}
           addCardPopupClik={handleAddCardClick}
+          addDaysCardPopupClick={handleAddDaysCardClick}
           editSchedulePopupClick={handleEditScheduleClick}
           onEditShedulerCardClick={handleScheduleCardClick}
           onCardActiveClick={handleActiveUpdate}
@@ -257,6 +265,13 @@ function App() {
         isOpen={isAddCardPopupOpen}
         onAddCard={handleAddCard}
       />
+
+      {/*<PopupAddDaysEvent*/}
+      {/*  isOpen={isAddDaysPopupOpen}*/}
+      {/*  onClose={closeAllPopups}*/}
+      {/*  // onAddDays={}*/}
+      {/*/>*/}
+
       <PopupEditEvent
         formTitle={'Редактировать мероприятие'}
         cities={city}
