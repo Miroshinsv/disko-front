@@ -266,11 +266,11 @@ function App() {
         onAddCard={handleAddCard}
       />
 
-      {/*<PopupAddDaysEvent*/}
-      {/*  isOpen={isAddDaysPopupOpen}*/}
-      {/*  onClose={closeAllPopups}*/}
-      {/*  // onAddDays={}*/}
-      {/*/>*/}
+      <PopupAddDaysEvent
+        isOpen={isAddDaysPopupOpen}
+        onClose={closeAllPopups}
+        // onAddDays={}
+      />
 
       <PopupEditEvent
         formTitle={'Редактировать мероприятие'}
