@@ -72,6 +72,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
           </div>
         </section>
 
+
         <section className="week-day">
           <h2 className="week-day__title">Среда</h2>
           <div className="container">
