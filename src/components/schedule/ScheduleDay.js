@@ -1,27 +1,24 @@
 import React from "react";
+import {days} from "../../utils/constants";
 
 function ScheduleDay({events}) {
-  // console.log(events);
+ // events - это key, value.
 
-  function renderItem() {
-    Object.keys(events => {
-      return(key);
-    });
+
+  const renderItem = (events) => {
+    Object.entries(events).map(([key, value]) => {
+      return(
+        <section className="week-day">
+        <h2>{days[key]}</h2>
+      </section>
+      )
+    })
   }
-  console.log(renderItem());
+  // console.log(renderItem());
 
 
   return (
-    <section className="week-day">
-      <h2 className="week-day__title">Понедельник</h2>
-      <div className="container">
-        {
-          weeks['monday'].map(item =>
-            <SchedulerCard item={item}/>
-          )
-        }
-      </div>
-    </section>
+    {renderItem}
   );
 }
 
