@@ -34,6 +34,7 @@ function Main({ addCardPopupClik, editSchedulePopupClick, onEditShedulerCardClic
         <button className="" onClick={addCardPopupClik}>Добавить дискотеку</button>
 
         <Accordion />
+
         <section className="week-day">
           <h2 className="week-day__title">Понедельник</h2>
           <div className="container">

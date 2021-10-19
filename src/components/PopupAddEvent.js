@@ -5,23 +5,7 @@ import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
 
 function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester, eventTypes}) {
-
-  const classOpen = isOpen ? 'popup_opened' : '';
-  const listDays = days.map(day =>
-    <option className="select__options" value={day.value}>{day.text}</option>
-  );
-  const listTypes = eventTypes.map(type =>
-    <option value={type.ID}>{type.EventsTypeName}</option>
-  );
-
-  const defaultMap = {
-    center: [37.644899, 55.716798],
-    zoom: 1
-  };
-  // console.log(defaultMap, 'Дефолт кординат');
-
   const [stateMap, setStateMap] = React.useState();
-  // console.log(stateMap, 'Активный кординат');
   const [placemarks, setPlacemarks] = React.useState([]);
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
@@ -40,17 +24,25 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     lng: '',
     // city: '1',
   });
+
+  const classOpen = isOpen ? 'popup_opened' : '';
+  const defaultMap = {
+    center: [37.644899, 55.716798],
+    zoom: 1
+  };
+  const listDays = days.map(day =>
+    <option className="select__options" value={day.value}>{day.text}</option>
+  );
+  const listTypes = eventTypes.map(type =>
+    <option value={type.ID}>{type.EventsTypeName}</option>
+  );
   const listPlacemark = placemarks.map((m) => {
     return m;
   });
 
-  // console.log(dataForm, '000');
-
-  React.useEffect(() =>{
-    setDataForm({
-      address: addressYndex,
-    })
-  }, [addressYndex])
+  // React.useEffect((setDataForm) =>{
+  //   setDataForm.address(addressYndex);
+  // }, [addressYndex])
 
   React.useEffect(() => {
     if (dataForm.address.length === 0 || 'undefined' === typeof dataForm.address) {
