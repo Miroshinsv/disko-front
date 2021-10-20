@@ -3,10 +3,16 @@ import CheckboxSlider from "./CheckboxSlider";
 import {YMaps, Map, Placemark} from "react-yandex-maps"
 import {days, directoryHTTP} from "../utils/constants";
 import * as ApiYandexMap from "../utils/ApiYandexMap";
+import address from "address";
 
 function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, suggester, eventTypes}) {
+  console.log(addressYndex, 'Адресс Яндекс');
   const [stateMap, setStateMap] = React.useState();
   const [placemarks, setPlacemarks] = React.useState([]);
+  const [dataLocation, setDataLocation] = React.useState({
+    address: '',
+  })
+  console.log(dataLocation, 'Адрес')
   const [dataForm, setDataForm] = React.useState({
     discoteca: '',
     address: '',
@@ -40,9 +46,11 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
     return m;
   });
 
-  // React.useEffect((setDataForm) =>{
-  //   setDataForm.address(addressYndex);
-  // }, [addressYndex])
+  React.useEffect(() =>{
+    setDataLocation({
+      address: addressYndex,
+    });
+  }, [addressYndex])
 
   React.useEffect(() => {
     if (dataForm.address.length === 0 || 'undefined' === typeof dataForm.address) {
@@ -55,14 +63,12 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
         });
 
         const coordinate = points.join().split(' ');
-        // const point =
         setDataCordinat( { lat: coordinate[1], lng: coordinate[0]});
         setPlacemarks([<Placemark
           key={0}
           geometry={[coordinate[1], coordinate[0]]}
         />]);
         setStateMap({center: [coordinate[1], coordinate[0]], zoom: 15})
-        // console.log(coordinate[1], coordinate[0], 'test');
       })
       .catch((err) => {
         console.log('Код ошибки:', err);
@@ -92,6 +98,11 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
 
     setDataForm({
       ...dataForm,
+      [name]: value,
+    });
+
+    setDataLocation({
+      ...dataLocation,
       [name]: value,
     });
   };
@@ -131,7 +142,7 @@ function PopupAddEvent({formTitle, isOpen, onClose, onAddCard, addressYndex, sug
           {/*<span className="form__error-span" id="" />*/}
 
           <input className="form__input form__address" type="text" id="suggest" name="address"
-                 placeholder="Адрес" onChange={handleChange} value={dataForm.address} />
+                 placeholder="Адрес" onChange={handleChange} value={dataLocation.address} />
           <div className="form__maps">
             <YMaps>
               <Map
